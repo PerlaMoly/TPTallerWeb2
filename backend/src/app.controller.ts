@@ -1,4 +1,4 @@
-import { Controller, Request, Post, UseGuards } from '@nestjs/common';
+import {Controller, Request, Response, Post, UseGuards, Get} from '@nestjs/common';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 
@@ -9,6 +9,11 @@ export class AppController {
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
   async login(@Request() req) {
-    return this.authService.login(req.user);
+    return this.authService.generateAccessToken(req.user);
+  }
+
+  @Get('/ping')
+  async ping(@Response() res) {
+    return res.send({ message: "pong" });
   }
 }

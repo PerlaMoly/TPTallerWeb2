@@ -1,10 +1,19 @@
 import { Injectable } from '@nestjs/common';
+import {UserDTO} from "./user.dto";
 
 @Injectable()
 export class UsersService {
   constructor() {}
 
-  async findOne(username: string): Promise<any> {
+  async getUserByName(username: string): Promise<any> {
     return username;
+  }
+
+  async getUserById(username: string): Promise<any> {
+    return username;
+  }
+
+  async getAllUsers(): Promise<UserDTO[]> {
+    return [];
   }
 }
