@@ -1,10 +1,8 @@
-import {Controller, Request, Response, Post, UseGuards, Get, Body, UnauthorizedException} from '@nestjs/common';
-import { LocalAuthGuard } from './auth/local-auth.guard';
-import { AuthService } from './auth/auth.service';
+import {Controller, Response, Get} from '@nestjs/common';
 
 @Controller()
 export class AppController {
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   @Get('/ping')
   async ping(@Response() res) {

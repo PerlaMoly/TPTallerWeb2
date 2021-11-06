@@ -9,9 +9,13 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async validateUser(username: string, pass: string): Promise<boolean> {
+  async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.usersService.getUserByName(username);
-    return await user.validatePassword(pass);
+    if (user && user.password === pass) {
+      const { password, ...result } = user;
+      return result;
+    }
+    return null;
   }
 
   async generateAccessToken(name: string) {
