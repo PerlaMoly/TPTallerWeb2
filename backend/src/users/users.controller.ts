@@ -13,6 +13,8 @@ import { ApiBearerAuth } from '@nestjs/swagger';
 // import { ValidUserIdPipe } from './../pipes/valid-user-id.pipe';
 import { UserDTO } from './user.dto';
 import { UsersService } from './users.service';
+import {User} from "./users.entity";
+import {JwtAuthGuard} from "../auth/jwt-auth.guard";
 
 @Controller('users')
 export class UsersController {
@@ -24,8 +26,8 @@ export class UsersController {
   }
 
   @Get(':id')
-  @ApiBearerAuth()
-  @UseGuards(AuthGuard('jwt'))
+  // @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   async getUserById(@Param('id') id: string): Promise<UserDTO> {
     return await this.usersService.getUserById(id);
   }
