@@ -4,6 +4,7 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 import { UserDTO } from 'src/users/user.dto';
 import { UsersService } from 'src/users/users.service';
 import { JWTPayload } from './jwt.payload';
+import {jwtConstants} from "./constants";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -11,12 +12,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_SECRET,
+      secretOrKey: jwtConstants.secret,
     });
   }
 
   async validate(payload: JWTPayload): Promise<UserDTO> {
-    const user = await this.usersService.getUserById(payload.userId);
+    const user = await this.usersService.getUserById(payload.id);
     if (!user) {
       throw new UnauthorizedException();
     }
