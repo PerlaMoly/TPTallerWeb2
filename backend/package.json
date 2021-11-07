@@ -28,11 +28,8 @@
     "@nestjs/passport": "^8.0.1",
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/swagger": "^5.1.4",
-<<<<<<< HEAD
     "passport": "^0.5.0",
-=======
     "mysql2": "*",
->>>>>>> 7638efc495e6432be20acd1f36f6531de8ff1bdc
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "reflect-metadata": "^0.1.13",
@@ -49,11 +46,8 @@
     "@types/jest": "^27.0.1",
     "@types/node": "^16.0.0",
     "@types/passport-jwt": "^3.0.6",
-<<<<<<< HEAD
     "@types/passport-local": "^1.0.34",
-=======
     "@types/sequelize": "^4.28.10",
->>>>>>> 7638efc495e6432be20acd1f36f6531de8ff1bdc
     "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
