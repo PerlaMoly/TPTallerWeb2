@@ -1,0 +1,35 @@
+<p>home works!</p>
+
+    <div class="inner">
+        
+       
+        
+        <div class="ng-autocomplete">
+          <ng-autocomplete
+            [data]="data"
+            [searchKeyword]="keyword"
+            (selected)="selectEvent($event)"
+            (inputChanged)="onChangeSearch($event)"
+            [itemTemplate]="itemTemplate"
+            [minQueryLength]="3"
+            [notFoundTemplate]="notFoundTemplate"
+          >
+          </ng-autocomplete>
+          <ng-template #itemTemplate let-item>
+            <a [innerHTML]="item.name"></a>
+          </ng-template>
+   
+          <ng-template #notFoundTemplate let-notFound>
+            <div [innerHTML]="notFound"></div>
+          </ng-template>
+        </div>
+
+        
+        <!-- <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="#">DATA SCIENCE</a>
+          <a class="nav-link" href="#">MOBILE</a>
+          <a class="nav-link" href="#">JUEGOS</a>
+          <a class="nav-link" href="#">DATABASE</a>
+        </nav> -->
+      </div>
+
