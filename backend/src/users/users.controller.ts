@@ -15,27 +15,30 @@ import { UserDTO } from './user.dto';
 import { UsersService } from './users.service';
 import {User} from "./users.entity";
 import {JwtAuthGuard} from "../auth/jwt-auth.guard";
+import {CreateUserDTO} from "./createUser.dto";
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Get()
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
   async getAllUsers(): Promise<UserDTO[]> {
     return await this.usersService.getAllUsers();
   }
 
   @Get(':id')
-  // @ApiBearerAuth()
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   async getUserById(@Param('id') id: string): Promise<UserDTO> {
     return await this.usersService.getUserById(id);
   }
 
-  // @Post()
-  // async newUser(@Body() user: UserDTO): Promise<UserDTO> {
-  //   return await this.usersService.newUser(user);
-  // }
+  @Post()
+  async newUser(@Body() user: CreateUserDTO): Promise<UserDTO> {
+    return await this.usersService.createUser(user);
+  }
   //
   // @Put(':id')
   // @ApiBearerAuth()
