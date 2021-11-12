@@ -1,8 +1,8 @@
 <p>home works!</p>
 
     <div class="inner">
-        
-               
+
+
         <div class="ng-autocomplete">
           <ng-autocomplete
             [data]="data"
@@ -17,13 +17,13 @@
           <ng-template #itemTemplate let-item>
             <a [innerHTML]="item.name"></a>
           </ng-template>
-   
+
           <ng-template #notFoundTemplate let-notFound>
             <div [innerHTML]="notFound"></div>
           </ng-template>
         </div>
 
-        
+
         <!-- <nav class="nav nav-masthead justify-content-center">
           <a class="nav-link active" href="#">DATA SCIENCE</a>
           <a class="nav-link" href="#">MOBILE</a>
