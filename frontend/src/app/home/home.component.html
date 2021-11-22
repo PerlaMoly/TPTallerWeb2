@@ -1,34 +1,39 @@
-<!-- <div class="container">
-  <header class="jumbotron">
-    <p>{{ content }}</p>
-  </header>
-</div> -->
-<div class="card">
-<div class="">
-  <ng-autocomplete
-    [data]="data"
-    [searchKeyword]="keyword"
-    (selected)="selectEvent($event)"
-    (inputChanged)="onChangeSearch($event)"
-    [minQueryLength]="3"
-    [itemTemplate]="itemTemplate"
-    [notFoundTemplate]="notFoundTemplate"
-  >
-  </ng-autocomplete>
-  <ng-template #itemTemplate let-item>
-    <a [innerHTML]="item.name"></a>
-  </ng-template>
+<div class="container">
+  <h1 class="text-center">Aprendé Online</h1>
+  <div class="card">
 
-  <ng-template #notFoundTemplate let-notFound>
-    <div [innerHTML]="notFound"></div>
-  </ng-template>
+    <div class="">
+    <ng-autocomplete
+      [data]="data"
+      [searchKeyword]="keyword"
+      (selected)="selectEvent($event)"
+      (inputChanged)="onChangeSearch($event)"
+      [minQueryLength]="3"
+      [itemTemplate]="itemTemplate"
+      [notFoundTemplate]="notFoundTemplate"
+    >
+    </ng-autocomplete>
+    <ng-template #itemTemplate let-item>
+      <a [innerHTML]="item.email"></a>
+    </ng-template>
+
+    <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+    </ng-template>
+    </div>
+  </div>
+
+  <div>
+    <nav class="nav nav-masthead justify-content-center">
+      <a class="nav-link active" href="#">DATA SCIENCE</a>
+      <a class="nav-link" href="#">MOBILE</a>
+      <a class="nav-link" href="#">JUEGOS</a>
+      <a class="nav-link" href="#">DATABASE</a>
+    </nav>
+  </div>
+
+
+
+
 </div>
-</div>
-<div>
-  <nav class="nav nav-masthead justify-content-center">
-    <a class="nav-link active" href="#">DATA SCIENCE</a>
-    <a class="nav-link" href="#">MOBILE</a>
-    <a class="nav-link" href="#">JUEGOS</a>
-    <a class="nav-link" href="#">DATABASE</a>
-  </nav>
-</div>
+
