@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Course } from 'src/courses/courses.entity';
 import { User } from '../users/users.entity';
 import { Carrito } from '../carrito/carrito.entity';
 import { Detalle } from '../detalle/detalle.entity';
@@ -12,6 +13,11 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
+        password: '4868',
+        database: 'tallerWeb2',
+      });
+      sequelize.addModels([User]);
+      sequelize.addModels([Course]);
         password: '',
         database: 'tallerWeb22',
       });
