@@ -27,7 +27,7 @@ export class UsersService {
 //recordar borrar esta funcion PERLA, pasarla a producto 20211122
   async getCursos(email: string): Promise<any> {
     return this.usersRepository.findAll({
-      attributes: ['name', 'email'],
+      attributes: ['Id','name', 'email'],
       where: {email: {[Op.like]: '%'+  email + '%'}}
     });
   }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 const API_URL = 'http://localhost:3000/';
+const extraValue = {id: null, name: '', email: ''}
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   onChangeSearch(event) {
     this.http.get('http://localhost:3000/home/getListCursos/' + event,httpOptions).subscribe(responseCurso =>{
+
       this.data =  responseCurso;
     });
     console.log(this.data);
