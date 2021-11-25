@@ -37,4 +37,43 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/carrito/4
+PUT http://localhost:3000/carrito/5
+Content-Type: application/json
+ 
+
+###
+DELETE http://localhost:3000/carrito/4
+
+###
+POST http://localhost:3000/detalle
+Content-Type: application/json
+
+{
+    "id_producto":"3",
+    "cantidad":"3",
+    "id_carrito":"2",
+    "precio":"200"
+
+}
+
+###
+PUT http://localhost:3000/detalle/1
+Content-Type: application/json
+ 
+{
+    "cantidad":"20"
+} 
+
+###
+PUT http://localhost:3000/detalle/1
+Content-Type: application/json
+ 
+{
+    "cantidad":"0"
+}
+ 
+
+###
+GET http://localhost:3000/detalle/1
+Content-Type: application/json
  

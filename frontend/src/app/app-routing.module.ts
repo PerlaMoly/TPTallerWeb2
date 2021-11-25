@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
 
 const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
@@ -13,7 +14,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'courses', component: ListCoursesComponent },
+  { path: 'courses/show/:id', component: ListCoursesComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    CarritoComponent
+    CarritoComponent,
+    ListCoursesComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,13 @@ import {User} from "./users.entity";
 import {CreateUserDTO} from "./createUser.dto";
 const bcrypt = require('bcrypt');
 
+//recordar borrar esta funcion PERLA, pasarla a producto 20211122
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+const operatorsAliases = {
+  $like: Op.like
+}
+
 @Injectable()
 export class UsersService {
   constructor(
@@ -15,6 +22,13 @@ export class UsersService {
   async getUserByEmail(email: string): Promise<any> {
     return this.usersRepository.findOne({
       where: {email}
+    });
+  }
+//recordar borrar esta funcion PERLA, pasarla a producto 20211122
+  async getCursos(email: string): Promise<any> {
+    return this.usersRepository.findAll({
+      attributes: ['Id','name', 'email'],
+      where: {email: {[Op.like]: '%'+  email + '%'}}
     });
   }
 
