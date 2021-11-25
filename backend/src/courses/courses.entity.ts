@@ -1,0 +1,42 @@
+import {
+  Table,
+  Column,
+  Model,
+  DeletedAt,
+  UpdatedAt,
+  CreatedAt,
+  Default,
+  PrimaryKey,
+  AutoIncrement,
+  NotNull,
+  AllowNull,
+} from 'sequelize-typescript';
+
+@Table({
+  timestamps: true,
+})
+export class Course extends Model {
+  @PrimaryKey
+  @AllowNull
+  @AutoIncrement
+  @Column
+  id: number;
+
+  @Column
+  name: string;
+
+  @Column
+  description: string;
+
+  @Column
+  hours: number;
+
+  @Column
+  price: number;
+
+  @Column
+  lenguage: string;
+
+  @Column
+  imageURL: string;
+}

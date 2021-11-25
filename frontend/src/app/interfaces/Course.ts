@@ -1,8 +1,9 @@
 export interface Course {
-  _id?: number;
+  id: number;
   name: string;
   description: string;
-  price: number;
   hours: number;
+  price: number;
+  lenguage: number;
   imageURL: string;
 }

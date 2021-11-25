@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Course } from 'src/courses/courses.entity';
 import { User } from '../users/users.entity';
 
 export const databaseProviders = [
@@ -14,6 +15,7 @@ export const databaseProviders = [
         database: 'tallerWeb2',
       });
       sequelize.addModels([User]);
+      sequelize.addModels([Course]);
       await sequelize.sync();
       return sequelize;
     },
