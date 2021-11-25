@@ -1,0 +1,39 @@
+ 
+<!--
+    <div *ngFor="let carrito of carritoService.carrito">{{carrito.estado}}</div>
+-->
+
+<table class="table table-border">
+    <thead>
+    <th>ID Curso</th>
+     <th>Precio</th>
+     <th>Eliminar</th>
+</thead>
+
+<tbody>
+<tr *ngFor="let detalle of carritoService.detalle">
+    <td>{{detalle.id_producto}}</td>
+     <td>$ {{detalle.precio}}</td>
+     <td>
+    <form (ngSubmit)="eliminarDelCarrito(detalle.id)" name="form">
+        <button>Eliminar</button>
+     </form>
+    </td>
+</tr>
+ 
+</tbody>
+</table>
+
+
+
+<div>
+<h1>Nombre del curso </h1>
+<p>Descripcion del curso</p>
+
+ 
+    
+<form (ngSubmit)="agregarAlCarrito()" name="form">
+   <button>Agregar al carrito</button>
+</form>
+ </div>
+ 

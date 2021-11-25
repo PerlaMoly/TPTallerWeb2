@@ -1,0 +1,40 @@
+ 
+###
+GET http://localhost:3000/carrito
+ 
+
+###
+GET http://localhost:3000/carrito/1
+
+
+###
+POST http://localhost:3000/carrito
+Content-Type: application/json
+
+{
+     "id_usuario":"1",
+    "estado":"1" 
+}
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+     "email":"mauro.julian.ayala@gmail.com",
+    "pass":"1234"
+}
+
+
+###
+PUT http://localhost:3000/detalle/5
+Content-Type: application/json
+ 
+{
+     "cantidad":123
+}
+
+
+###
+DELETE http://localhost:3000/carrito/4
+ 

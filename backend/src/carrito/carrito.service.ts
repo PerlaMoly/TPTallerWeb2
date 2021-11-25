@@ -35,7 +35,7 @@ export class CarritoService {
       estado
   }
   const carrito = await this.carritoRepository.create(dataToCreate);
-  return;
+  return carrito;
   } 
 
   async finalizarCarrito(id: number): Promise<any> {

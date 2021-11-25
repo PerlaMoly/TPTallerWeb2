@@ -45,5 +45,4 @@ testem.log
 Thumbs.db
 
 frontend/package-lock.json
-backend/api.rest
 frontend/angular.json
