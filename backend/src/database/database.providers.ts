@@ -12,8 +12,8 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '',
-        database: 'tallerWeb22',
+        password: '4868',
+        database: 'tallerWeb2',
       });
       sequelize.addModels([User,Carrito,Detalle]);
       await sequelize.sync();
