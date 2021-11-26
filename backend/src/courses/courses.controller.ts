@@ -35,4 +35,9 @@ export class coursesController {
     return await this.coursesService.getFilterCourses(name);
   }
 
+  @Get('/category/:category') //20211125
+  async getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
+    return await this.coursesService.getFilterCoursesCategory(category);
+  }
+
 }

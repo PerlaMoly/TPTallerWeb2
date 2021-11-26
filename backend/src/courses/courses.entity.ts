@@ -35,7 +35,7 @@ export class Course extends Model {
   price: number;
 
   @Column
-  lenguage: string;
+  category: string; //20211125
 
   @Column
   imageURL: string;

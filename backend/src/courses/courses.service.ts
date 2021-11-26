@@ -39,6 +39,11 @@ export class CoursesService {
       where: {name: {[Op.like]: '%'+  name + '%'}}
     });
   }
-
+  //20211125
+  async getFilterCoursesCategory (category:string) : Promise<Course[]> {
+    return this.coursesRepository.findAll<Course>({
+      where: {category}
+    });
+  }
 
 }

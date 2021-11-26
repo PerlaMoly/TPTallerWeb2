@@ -17,7 +17,7 @@ export class CourseDTO {
   price: number;
 
   @ApiProperty()
-  lenguage: string;
+  category: string; //20211125
 
   @ApiProperty()
   imageURL: string;

@@ -1,4 +1,5 @@
-<div class="col-md-12">
+<div class="col-md-6">
+  <h1>Iniciar Sesión</h1>
   <div class="card card-container">
     <img
       id="profile-img"
@@ -27,7 +28,7 @@
           role="alert"
           *ngIf="email.errors && f.submitted"
         >
-          Email is required!
+          El email es requerido!
         </div>
       </div>
       <div class="form-group">
@@ -46,9 +47,9 @@
           role="alert"
           *ngIf="password.errors && f.submitted"
         >
-          <div *ngIf="password.errors['required']">Password is required</div>
+          <div *ngIf="password.errors['required']">La contraseña es requerida!</div>
           <div *ngIf="password.errors['minlength']">
-            Password must be at least 6 characters
+            La contraseña debe tener al menos 6 caracteres.
           </div>
         </div>
       </div>
