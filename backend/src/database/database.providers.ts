@@ -17,7 +17,7 @@ export const databaseProviders = [
         database: 'tallerweb2',
 
       });
-      sequelize.addModels([User,Carrito,Detalle]);
+      sequelize.addModels([User,Carrito,Detalle,Course]);
       await sequelize.sync();
       return sequelize;
     },

@@ -57,20 +57,14 @@ export class HomeComponent implements OnInit {
 
 
   selectEvent(event): void {
-    
+    console.log(event);
     if(event.id == "-1")
     {
       this.route.navigate(['//courses/filter/' + event.name]);
-      //this.courseService.getFilterCourses(event.name);
-      console.log("Seleccione busqueda general");
-
-      this.route.navigateByUrl
     }
     else
     {      
       this.route.navigate(['//courses/show/' + event.id]);
-      console.log("Seleccione busqueda pre");
-    
     }    
   }
 
