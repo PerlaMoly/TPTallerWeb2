@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { RouterModule, Router } from '@angular/router'; //20211125 se agrega RouterModule
+import { CourseService } from '../services/course.service';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
+
+
 
 const API_URL = 'http://localhost:3000/';
-const extraValue = {id: null, name: '', email: ''}
+var extraValue ={id: -1, name: ""};
 
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': '*'
   })
 };
 
@@ -21,37 +24,54 @@ const httpOptions = {
 
 
 export class HomeComponent implements OnInit {
-  ngOnInit() {
-      //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-  //Add 'implements OnInit' to the class.
-  }
+ 
+  ngOnInit() { }
   content?: string;
   title = 'taller';
   // formGroup: FormGroup;
   // formSearch: FormGroup;
   // username: String;
-  keyword = "email";
-  data: any;
+  keyword = "name";
+  data:any;
 
  
-  constructor(private http: HttpClient) { }
+  constructor(
+      private http: HttpClient,
+      private route: Router,
+      private courseService: CourseService
+      ) { }
 
   onChangeSearch(event) {
-    this.http.get('http://localhost:3000/home/getListCursos/' + event,httpOptions).subscribe(responseCurso =>{
-
-      this.data =  responseCurso;
+      this.http.get(API_URL + 'home/getListCursos/' + event,httpOptions).subscribe(responseCurso =>{  
+      extraValue.name = event;
+      //reformateo Json para agregar el valor de busqueda
+      var responsetoString = JSON.stringify(responseCurso);
+      responsetoString = responsetoString.substring(1,responsetoString.length-1);
+      var responseFinal = "[" + JSON.stringify(extraValue) + "," + responsetoString + "]";
+      responseFinal = JSON.parse(responseFinal);
+      this.data = responseFinal;
     });
-    console.log(this.data);
-    return this.data;
 
-  
+    return this.data;
   }
 
 
   selectEvent(event): void {
-    console.log("esto hago si pasa algo");
-    // this.router.navigate(['/view'])
     
+    if(event.id == "-1")
+    {
+      this.route.navigate(['//courses/filter/' + event.name]);
+      //this.courseService.getFilterCourses(event.name);
+      console.log("Seleccione busqueda general");
+
+      this.route.navigateByUrl
+    }
+    else
+    {      
+      this.route.navigate(['//courses/show/' + event.id]);
+      console.log("Seleccione busqueda pre");
+    
+    }    
   }
 
 

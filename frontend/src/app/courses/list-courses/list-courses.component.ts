@@ -11,11 +11,11 @@ export class ListCoursesComponent implements OnInit {
   courses!: Course[];
 
   constructor(private courseService: CourseService) {}
-
+ 
   ngOnInit(): void {
+
     this.courseService.getCourses().subscribe(
       (res) => (this.courses = res),
-
       (err) => console.log(err)
     );
   }

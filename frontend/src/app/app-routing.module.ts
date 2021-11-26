@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'courses', component: ListCoursesComponent },
   { path: 'courses/show/:id', component: ListCoursesComponent },
+  { path: 'courses/filter/:name', component: ListCoursesComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

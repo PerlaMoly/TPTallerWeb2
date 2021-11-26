@@ -14,7 +14,7 @@
     >
     </ng-autocomplete>
     <ng-template #itemTemplate let-item>
-      <a [innerHTML]="item.email"></a>
+      <a [innerHTML]="item.name"></a>
     </ng-template>
 
     <ng-template #notFoundTemplate let-notFound>
@@ -25,15 +25,16 @@
 
   <div>
     <nav class="nav nav-masthead justify-content-center">
-      <a class="nav-link active" href="#">DATA SCIENCE</a>
-      <a class="nav-link" href="#">MOBILE</a>
-      <a class="nav-link" href="#">JUEGOS</a>
-      <a class="nav-link" href="#">DATABASE</a>
+      <a class="nav-link active" routerLink="/courses" routerLinkActive="active">DATA SCIENCE</a>
+      <a class="nav-link" href="/courses">MOBILE</a>
+      <a class="nav-link" href="/courses">JUEGOS</a>
+      <a class="nav-link" href="/courses">DATABASE</a>
     </nav>
   </div>
 
-
-
-
+  <div class="Fondo">
+    <img src="assets/Fondo.jpg" >
+  </div>
+  <app-list-courses></app-list-courses>
 </div>
 
