@@ -3,14 +3,9 @@ import { AppController } from './app.controller';
 import {AuthModule} from "./auth/auth.module";
 import { CoursesModule } from './courses/courses.module';
 import { UsersModule } from './users/users.module';
-
-@Module({
-imports: [AuthModule, UsersModule, CoursesModule],
 import { HomeModule } from './home/home.module';
-import {UsersModule} from "./users/users.module";
 import { CarritoModule } from './carrito/carrito.module';
 import { DetalleModule } from './detalle/detalle.module';
-
 
 @Module({
   imports: [
@@ -18,7 +13,8 @@ import { DetalleModule } from './detalle/detalle.module';
     UsersModule,
     CarritoModule,
     DetalleModule,
-    HomeModule
+    HomeModule,
+    CoursesModule
   ],
   controllers: [AppController],
 })
