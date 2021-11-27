@@ -1,0 +1,53 @@
+
+<div class="container">
+    <h1 class="text-center margintopbottom"  >Aprendé Online / Mi Carrito</h1>
+   
+    <div class="card">
+
+        
+
+<table class="table table-border">
+    <thead>
+        <th>Curso</th>
+        <th>Tapa</th>
+        <th>Categoria</th>
+        <th>Precio</th>
+        <th>Horas</th>
+        <th>Eliminar</th>
+</thead>
+
+<tbody>
+<tr *ngFor="let detalle of carritoService.detalle">
+    <td>{{detalle.courses['name']}}</td>
+    <td><img src="assets/{{detalle.courses['imageURL']}}.jpg" style="width: 200px;"></td>
+    <td>{{detalle.courses['category']}}</td>
+    <td>U$S {{detalle.courses['price']}}</td>
+    <td>{{detalle.courses['hours']}}</td>
+     
+     <td>
+         <button class="btn btn-danger"  (click)="eliminarDelCarrito(detalle.id)">Eliminar</button>
+ 
+    </td>
+</tr>
+ 
+</tbody>
+</table>
+
+
+</div>
+
+
+<div>
+    <br><br>
+<h1>Nombre del curso </h1>
+<p>Descripcion del curso</p>
+
+ 
+    
+<button  (click)="agregarAlCarrito('2')" >Agregar al carrito 2</button>
+<button  (click)="agregarAlCarrito('3')" >Agregar al carrito 3</button>
+<button  (click)="agregarAlCarrito('4')" >Agregar al carrito 4</button>
+ 
+ </div>
+</div> 
+ 

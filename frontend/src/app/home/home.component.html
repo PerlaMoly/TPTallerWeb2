@@ -14,7 +14,7 @@
     >
     </ng-autocomplete>
     <ng-template #itemTemplate let-item>
-      <a [innerHTML]="item.email"></a>
+      <a [innerHTML]="item.name"></a>
     </ng-template>
 
     <ng-template #notFoundTemplate let-notFound>
@@ -25,15 +25,20 @@
 
   <div>
     <nav class="nav nav-masthead justify-content-center">
-      <a class="nav-link active" href="#">DATA SCIENCE</a>
-      <a class="nav-link" href="#">MOBILE</a>
-      <a class="nav-link" href="#">JUEGOS</a>
-      <a class="nav-link" href="#">DATABASE</a>
+      <a class="nav-link active" routerLink="/home/category/DataScience" routerLinkActive="active">DATA SCIENCE</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/Mobile" routerLinkActive="active">MOBILE</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/Games" routerLinkActive="active">JUEGOS</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/DataBase" routerLinkActive="active">DATABASE</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/Angular" routerLinkActive="active">ANGULAR</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/C#" routerLinkActive="active">CSHARP</a> <!-- //20211125-->
+      <a class="nav-link active" routerLink="/home/category/.NET" routerLinkActive="active">.NET</a> <!-- //20211125-->
     </nav>
   </div>
-
-
-
-
+  
+  <div class="Fondo">
+    <img src="assets/Fondo.jpg" >
+  </div>
+  <router-outlet></router-outlet>
+  <!--<app-list-courses></app-list-courses>-->
 </div>
 

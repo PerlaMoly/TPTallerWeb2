@@ -17,12 +17,16 @@
                 </li>
 
                 <li class="list-group-item">
-                    Precio: ${{course.price}} ARS
+                    Precio: ${{course.price}} USD
                 </li>
 
                 <li class="list-group-item">
-                    <button class="btn btn-danger"> Ver </button>
+                  <button class="btn btn-danger"> Ver </button> 
+                 
+                  <button class="btn btn-danger" (click)="agregarAlCarrito(course.price, course.id)"> Agregar al carrito </button>
+            
                 </li>
+
 
             </ul>
         </div>
