@@ -22,7 +22,7 @@ export class CarritoService {
   async getCarritoById(id: string): Promise<any> {
     return this.carritoRepository.findByPk(id);
   }
-
+  
   async getAllCarrito(): Promise<Carrito[]> {
     return this.carritoRepository.findAll<Carrito>();
   }
