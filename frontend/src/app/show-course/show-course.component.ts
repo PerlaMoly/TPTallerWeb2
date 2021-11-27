@@ -47,12 +47,12 @@ export class ShowCourseComponent implements OnInit {
   agregarAlCarrito(price: number, id_producto: number) {
     //20211125
     this.id_usuario = this.tokenStorage.getUser().id; //obtengo id del usuario logueado;
-    this.carritoService.dameMiCarrito(this.id_usuario);
-    {
+   // this.carritoService.dameMiCarrito(this.id_usuario);
+   // {
       this.carritoService.buscoCarritoUsuario(this.id_usuario).subscribe(
         (res) => {
           this.carritoService.carrito = res;
-          this.id_carrito = res.id;
+
           if (res == null) {
             this.carritoService.crearCarrito(this.id_usuario).subscribe(
               (res) => {
@@ -61,6 +61,10 @@ export class ShowCourseComponent implements OnInit {
               (err) => console.error(err)
             );
           }
+           else{
+            this.id_carrito = res.id;
+           } 
+           
           if (this.id_carrito != 0) {
             this.carritoService
               .agregarAlCarrito(1, this.id_carrito, price, id_producto)
@@ -71,5 +75,5 @@ export class ShowCourseComponent implements OnInit {
         (err) => console.error(err)
       );
     }
-  }
+ // }
 }
