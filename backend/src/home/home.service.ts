@@ -1,19 +1,16 @@
 import {Inject, Injectable} from '@nestjs/common';
-import { UsersService } from 'src/users/users.service'; //cambiar luego por el de cursos
+import {CoursesService} from 'src/courses/courses.service'; //20211125
 
 const bcrypt = require('bcrypt');
-
-
 
 @Injectable()
 export class HomeService {
   constructor(
-    private usersService: UsersService
+    private courseService: CoursesService
   ) {}
 
   async getCursos(inputkeys: string): Promise<any> {
-
-      return this.usersService.getCursos(inputkeys);
+    return this.courseService.getCursos(inputkeys);
  }
 
 }
