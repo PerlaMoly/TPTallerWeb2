@@ -24,7 +24,7 @@ export class CarritoComponent implements OnInit {
 
   ngOnInit(): void {
   //  this.id_usuario = this.token.getUser()["id"]+1;
-    this.id_usuario =  this.tokenStorage.getUser().id+1;
+    this.id_usuario =  this.tokenStorage.getUser().id;
     this.dameCarrito(this.id_usuario);
     this.dameDetalleDelCarrito();
   }
