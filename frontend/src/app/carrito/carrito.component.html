@@ -5,15 +5,17 @@
 
 <table class="table table-border">
     <thead>
-    <th>ID Curso</th>
+        <th>Curso</th>
+        <th>Caregoria</th>
      <th>Precio</th>
      <th>Eliminar</th>
 </thead>
 
 <tbody>
 <tr *ngFor="let detalle of carritoService.detalle">
-    <td>{{detalle.id_producto}}</td>
-     <td>$ {{detalle.precio}}</td>
+    <td>{{detalle.courses['name']}}</td>
+    <td>{{detalle.courses['category']}}</td>
+     <td>$ {{detalle.courses['price']}}</td>
      <td>
     <form (ngSubmit)="eliminarDelCarrito(detalle.id)" name="form">
         <button>Eliminar</button>
