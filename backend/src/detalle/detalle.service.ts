@@ -1,6 +1,7 @@
 import {BadRequestException,Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { DetalleDTO } from "./detalle.dto";
 import { Detalle} from "./detalle.entity";
+import { Course} from "../courses/courses.entity";
 import { MessageDto } from 'src/common/message.dto';
 
 @Injectable()
@@ -10,11 +11,18 @@ export class DetalleService {
     private detalleRepository: typeof Detalle
   ) {}
 
+  
+
   async getDetalleById_Carrito(idCarrito: number): Promise<any> {
+
+ 
     const detalle = await this.detalleRepository.findAll({
-      where: { id_carrito: idCarrito }
+     
+      where: { id_carrito: idCarrito } ,  include:  [Course] ,
     }); 
     return detalle;
+
+
   }
   
 

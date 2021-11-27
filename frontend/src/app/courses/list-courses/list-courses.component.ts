@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/interfaces/Course';
 import { CourseService } from '../../services/course.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router'; //20211125
 
 @Component({
   selector: 'app-list-courses',
@@ -10,15 +11,36 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class ListCoursesComponent implements OnInit {
   courses!: Course[];
-
-  constructor(private courseService: CourseService) {}
+  constructor(
+    private courseService: CourseService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.courseService.getCourses().subscribe(
-      (res) => (this.courses = res),
-
-      (err) => console.log(err)
-    );
+    this.route.paramMap.subscribe((parameterIn: any) => {
+      //20211125
+      const { params } = parameterIn;
+      //      console.log(parameterIn);
+      if (params.category) {
+        //20211125
+        this.courseService.getFilterCoursesCategory(params.category).subscribe(
+          (res) => (this.courses = res),
+          (err) => console.log(err)
+        );
+      } else if (params.name) {
+        //20211125
+        this.courseService.getFilterCourses(params.name).subscribe(
+          (res) => (this.courses = res),
+          (err) => console.log(err)
+        );
+      } //20211125
+      else {
+        this.courseService.getCourses().subscribe(
+          (res) => (this.courses = res),
+          (err) => console.log(err)
+        );
+      }
+    });
   }
 
   getCourses(id: number) {
@@ -28,13 +50,4 @@ export class ListCoursesComponent implements OnInit {
       (err) => console.log(err)
     );
   }
-
-  showCourse(id: number) {
-    this.courseService.getCourse(id).subscribe(
-      (res) => console.log(res),
-
-      (err) => console.log(err)
-    );
-  }
 }
-

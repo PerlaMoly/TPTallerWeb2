@@ -22,7 +22,7 @@ export class CarritoService {
   async getCarritoById(id: string): Promise<any> {
     return this.carritoRepository.findByPk(id);
   }
-
+  
   async getAllCarrito(): Promise<Carrito[]> {
     return this.carritoRepository.findAll<Carrito>();
   }
@@ -35,7 +35,7 @@ export class CarritoService {
       estado
   }
   const carrito = await this.carritoRepository.create(dataToCreate);
-  return;
+  return carrito;
   } 
 
   async finalizarCarrito(id: number): Promise<any> {

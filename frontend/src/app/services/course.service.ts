@@ -8,6 +8,7 @@ import { Course } from '../interfaces/Course';
 })
 export class CourseService {
   BASE_URL: string = 'http://localhost:3000';
+  data:any;
 
   constructor(private http: HttpClient) {}
 
@@ -18,4 +19,14 @@ export class CourseService {
   getCourse(id: number): Observable<Course> {
     return this.http.get<Course>(this.BASE_URL + '/courses/' + id);
   }
+
+  //20211125
+  getFilterCourses(name: string): Observable<Course[]> {
+    return this.http.get<Course[]>(this.BASE_URL + '/courses/filter/' + name);
+  }
+
+  //20211125
+  getFilterCoursesCategory(category: string): Observable<Course[]> {
+      return this.http.get<Course[]>(this.BASE_URL + '/courses/category/' + category);
+   }
 }

@@ -4,6 +4,6 @@ export interface Course {
   description: string;
   hours: number;
   price: number;
-  lenguage: number;
+  category: string; //20211125
   imageURL: string;
 }

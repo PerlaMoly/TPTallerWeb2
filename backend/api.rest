@@ -27,6 +27,16 @@ Content-Type: application/json
 
 
 ###
+PUT http://localhost:3000/detalle/5
+Content-Type: application/json
+ 
+{
+     "cantidad":123
+}
+
+
+###
+DELETE http://localhost:3000/carrito/4
 PUT http://localhost:3000/carrito/5
 Content-Type: application/json
  
