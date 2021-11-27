@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CarritoService } from '../services/carrito.service';
+import { CourseService } from '../services/course.service';
 import { NgForm } from '@angular/forms';
 import { TokenStorageService } from '../services/token-storage.service';
+import { Course } from 'src/app/interfaces/Course';
+
 
 @Component({
   selector: 'app-carrito',
@@ -15,8 +18,9 @@ export class CarritoComponent implements OnInit {
   precio = 1;
   id_carrito = 0   ;
   id_usuario: any ;
+  course!: Course;
  
-  constructor(public carritoService: CarritoService,private token: TokenStorageService, private tokenStorage: TokenStorageService) { }
+  constructor(public courseService: CourseService,public carritoService: CarritoService,private token: TokenStorageService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit(): void {
   //  this.id_usuario = this.token.getUser()["id"]+1;
@@ -72,18 +76,30 @@ export class CarritoComponent implements OnInit {
   }
 
 
-  agregarAlCarrito(): void{
+  agregarAlCarrito(id_producto:string): void{
     if(this.id_carrito==0){
       this.dameCarrito(this.id_usuario);
 
     }
   else{ 
-   this.carritoService.agregarAlCarrito(this.cantidad,this.id_carrito,this.precio,this.id_producto).subscribe(
+    /*this.courseService.getCourse(id_producto).subscribe(
       res =>{
-        this.dameDetalleDelCarrito()
-      },
-      err =>console.error(err)
-    );
+        this.courseService.course = res;
+        const precio = */
+        const precio = 300;
+        const idProducto : number =parseInt(id_producto);
+
+            this.carritoService.agregarAlCarrito(this.cantidad,this.id_carrito,precio,idProducto).subscribe(
+            res =>{
+              this.dameDetalleDelCarrito()
+            },
+            err =>console.error(err)
+          );
+
+  /*  },
+    err =>console.error(err)
+  );*/
+
 
   } 
 
