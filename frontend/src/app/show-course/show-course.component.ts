@@ -49,6 +49,7 @@ export class ShowCourseComponent implements OnInit {
     this.id_usuario = this.tokenStorage.getUser().id; //obtengo id del usuario logueado;
    // this.carritoService.dameMiCarrito(this.id_usuario); 
    // {
+     //omitir
       this.carritoService.buscoCarritoUsuario(this.id_usuario).subscribe(
         (res) => {
           this.carritoService.carrito = res;
