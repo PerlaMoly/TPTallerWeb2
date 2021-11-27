@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/interfaces/Course';
 import { CourseService } from '../../services/course.service';
+import { CarritoService } from '../../services/carrito.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router'; //20211125
 
@@ -11,6 +12,7 @@ import { ActivatedRoute } from '@angular/router'; //20211125
 })
 export class ListCoursesComponent implements OnInit {
   courses!: Course[];
+
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute
@@ -43,7 +45,7 @@ export class ListCoursesComponent implements OnInit {
     });
   }
 
-  getCourses(id: number) {
+  getCourses() {
     this.courseService.getCourses().subscribe(
       (res) => console.log(res),
 

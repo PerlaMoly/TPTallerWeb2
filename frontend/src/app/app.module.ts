@@ -11,8 +11,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
+import { CarritoComponent } from './carrito/carrito.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
 import { ShowCourseComponent } from './show-course/show-course.component';
 
@@ -24,7 +25,9 @@ import { ShowCourseComponent } from './show-course/show-course.component';
     ProfileComponent,
     HomeComponent,
     ListCoursesComponent,
-    ShowCourseComponent
+    ShowCourseComponent,
+    CarritoComponent,
+    ListCoursesComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,8 +38,7 @@ import { ShowCourseComponent } from './show-course/show-course.component';
     AutocompleteLibModule,
   ],
   providers: [authInterceptorProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}
 
