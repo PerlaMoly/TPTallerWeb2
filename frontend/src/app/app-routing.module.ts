@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
+import { ShowCourseComponent } from './show-course/show-course.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -13,7 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'courses', component: ListCoursesComponent },
-  { path: 'courses/show/:id', component: ListCoursesComponent },
+  { path: 'courses/:id', component: ShowCourseComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 

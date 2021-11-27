@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { authInterceptorProviders } from './helpers/auth.interceptor';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
+import { ShowCourseComponent } from './show-course/show-course.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ListCoursesComponent } from './courses/list-courses/list-courses.compon
     RegisterComponent,
     ProfileComponent,
     HomeComponent,
-    ListCoursesComponent
+    ListCoursesComponent,
+    ShowCourseComponent
   ],
   imports: [
     BrowserModule,
