@@ -43,8 +43,6 @@ export class Course extends Model {
   @Column
   imageURL: string;
 
-
-  
   @HasMany(() => Detalle, 'id')
   detalle: Detalle;
 
