@@ -18,7 +18,6 @@ export class UsersService {
     });
   }
 
-
   async getUserById(id: string): Promise<any> {
     return this.usersRepository.findByPk(id);
   }
@@ -28,13 +27,15 @@ export class UsersService {
   }
 
   async createUser(data): Promise<UserDTO> {
-    const { email, name, password } = data;
+    const { email, name, password, last_name, address } = data;
     const saltRounds = 10;
     const hashedPW = bcrypt.hashSync(password, saltRounds);
 
     const dataToCreate: CreateUserDTO = {
       email,
       name,
+      last_name,
+      address,
       password: hashedPW,
     }
     const user = await this.usersRepository.create(dataToCreate);

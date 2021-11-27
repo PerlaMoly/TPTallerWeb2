@@ -8,6 +8,12 @@ export class User extends Model {
   name: string;
 
   @Column
+  last_name: string;
+
+  @Column
+  address: string;
+
+  @Column
   email: string;
 
   @Column
