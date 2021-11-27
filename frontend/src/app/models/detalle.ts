@@ -11,6 +11,7 @@ export interface Detalle{
             name:string,
             price:number;
             category:string;
+            hours:string;
         }
       ]
 }
