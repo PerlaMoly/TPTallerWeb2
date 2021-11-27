@@ -13,15 +13,11 @@ export const databaseProviders = [
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '4868',
-        database: 'tallerWeb2',
-      });
-      sequelize.addModels([User]);
-      sequelize.addModels([Course]);
         password: '',
         database: 'tallerWeb22',
       });
-      sequelize.addModels([User,Carrito,Detalle]);
+ 
+      sequelize.addModels([User,Carrito,Detalle,Course]);
       await sequelize.sync();
       return sequelize;
     },
