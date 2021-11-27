@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/interfaces/Course';
 import { CourseService } from '../../services/course.service';
-import { CarritoService } from '../../services/carrito.service';
-import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router'; //20211125
 import { CarritoService } from '../../services/carrito.service'; //20211125
 import { Router } from '@angular/router'; //20211125 se agrega RouterModule

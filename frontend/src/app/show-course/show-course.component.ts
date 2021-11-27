@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Course } from 'src/app/interfaces/Course';
 import { CourseService } from '../services/course.service';
 import { CarritoService } from '../services/carrito.service';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { TokenStorageService } from '../services/token-storage.service';
 
 @Component({
   selector: 'app-show-course',
@@ -24,7 +26,9 @@ export class ShowCourseComponent implements OnInit {
   constructor(
     private courseService: CourseService,
     private carritoService: CarritoService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private tokenStorage: TokenStorageService
   ) {}
 
   ngOnInit(): void {
@@ -37,62 +41,32 @@ export class ShowCourseComponent implements OnInit {
     );
   }
 
-  dameCarrito(id_usuario: number) {
-    this.carritoService.buscoCarritoUsuario(id_usuario).subscribe(
-      (res) => {
-        this.carritoService.carrito = res;
-        if (res == null) {
-          this.carritoService.crearCarrito(id_usuario).subscribe(
-            (res) => {},
-            (err) => console.error(err)
-          );
-        }
-
-        this.carritoService.dameMiCarrito(id_usuario).subscribe(
-          (res) => {
-            this.carritoService.carrito = res;
-            this.id_carrito = 56;
-            this.dameDetalleDelCarrito();
-          },
-          (err) => console.error(err)
-        );
-      },
-      (err) => console.error(err)
-    );
-  }
-
-  dameDetalleDelCarrito() {
-    const idCarrito = this.id_carrito;
-    this.carritoService.dameDetalleDelCarrito(idCarrito).subscribe(
-      (res) => {
-        this.carritoService.detalle = res;
-      },
-      (err) => console.error(err)
-    );
-  }
-
-  agregarAlCarrito(id_producto: number): void {
-    if (this.id_carrito == 0) {
-      this.dameCarrito(this.id_usuario);
-    } else {
-      /*this.courseService.getCourse(id_producto).subscribe(
-      res =>{
-        this.courseService.course = res;
-        const precio = */
-      const precio = 300;
-
-      this.carritoService
-        .agregarAlCarrito(this.cantidad, this.id_carrito, precio, id_producto)
-        .subscribe(
-          (res) => {
-            this.dameDetalleDelCarrito();
-          },
-          (err) => console.error(err)
-        );
-
-      /*  },
-    err =>console.error(err)
-  );*/
+  agregarAlCarrito(price: number, id_producto: number) {
+    //20211125
+    this.id_usuario = this.tokenStorage.getUser().id; //obtengo id del usuario logueado;
+    this.carritoService.dameMiCarrito(this.id_usuario);
+    {
+      this.carritoService.buscoCarritoUsuario(this.id_usuario).subscribe(
+        (res) => {
+          this.carritoService.carrito = res;
+          this.id_carrito = res.id;
+          if (res == null) {
+            this.carritoService.crearCarrito(this.id_usuario).subscribe(
+              (res) => {
+                this.id_carrito = res.id;
+              },
+              (err) => console.error(err)
+            );
+          }
+          if (this.id_carrito != 0) {
+            this.carritoService
+              .agregarAlCarrito(1, this.id_carrito, price, id_producto)
+              .subscribe();
+            this.router.navigate(['//carrito']);
+          }
+        },
+        (err) => console.error(err)
+      );
     }
   }
 }

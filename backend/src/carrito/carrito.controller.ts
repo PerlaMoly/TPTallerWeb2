@@ -27,7 +27,9 @@ import {
     }
 
     @Get(':id')
-    async getCarritoById_Usuario(@Param('id') id: number): Promise<CarritoDTO> {
+    async getCarritoById_Usuario(
+      @Param('id', ParseIntPipe) id: number,
+    ): Promise<CarritoDTO> {
       return await this.carritoService.getCarritoById_Usuario(id);
     }
 
