@@ -1,0 +1,13 @@
+.card-container {
+  display: flex;
+  flex-direction: row;
+}
+
+form {
+  width: 100%;
+  margin: 24px;
+}
+
+img {
+  height: 150px;
+}

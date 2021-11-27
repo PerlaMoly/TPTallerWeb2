@@ -1,8 +1,8 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Course } from 'src/courses/courses.entity';
 import { User } from '../users/users.entity';
 import { Carrito } from '../carrito/carrito.entity';
 import { Detalle } from '../detalle/detalle.entity';
+import { Course } from '../courses/courses.entity';
 
 export const databaseProviders = [
   {
