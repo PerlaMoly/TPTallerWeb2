@@ -5,6 +5,12 @@ export class CreateUserDTO {
   name: string;
 
   @ApiProperty()
+  last_name: string;
+
+  @ApiProperty()
+  address: string;
+
+  @ApiProperty()
   email: string;
 
   @ApiProperty()

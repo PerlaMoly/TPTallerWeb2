@@ -1,4 +1,4 @@
-<div class="col-md-6">
+<div class="col-md-12">
   <h1>Registrarse</h1>
   <div class="card card-container">
     <img
@@ -32,6 +32,50 @@
           </div>
           <div *ngIf="name.errors['maxlength']">
             El nombre puede tener hasta 20 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="last_name">Apellido</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.last_name"
+          required
+          minlength="3"
+          maxlength="20"
+          #last_name="ngModel"
+        />
+        <div class="alert-danger" *ngIf="last_name.errors && f.submitted">
+          <div *ngIf="last_name.errors['required']">El apellido es requerido</div>
+          <div *ngIf="last_name.errors['minlength']">
+            El apellido debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="last_name.errors['maxlength']">
+            El apellido puede tener hasta 20 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="address">Direccion</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          [(ngModel)]="form.address"
+          required
+          minlength="3"
+          maxlength="20"
+          #address="ngModel"
+        />
+        <div class="alert-danger" *ngIf="address.errors && f.submitted">
+          <div *ngIf="address.errors['required']">La direccion es requerida</div>
+          <div *ngIf="address.errors['minlength']">
+            La direccion debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="address.errors['maxlength']">
+            La direccion puede tener hasta 20 caracteres
           </div>
         </div>
       </div>
