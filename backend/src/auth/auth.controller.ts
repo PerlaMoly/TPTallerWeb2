@@ -17,8 +17,8 @@ export class AuthController {
 
   @Post('register')
   async register(@Body() registerDTO) {
-    const { email, password } = registerDTO;
-    const valid = await this.authService.validateNewUser(email, password);
+    const { email } = registerDTO;
+    const valid = await this.authService.validateNewUser(email);
     if (!valid) {
       throw new UnauthorizedException();
     }

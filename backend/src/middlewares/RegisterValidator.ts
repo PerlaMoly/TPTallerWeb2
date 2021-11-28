@@ -23,9 +23,17 @@ export class RegisterValidator implements NestMiddleware {
       errors.push('El campo direccion es requerido');
     }
 
+
     if (!password) {
       errors.push('El campo contraseña es requerido');
+    } else {
+      const passIsValid = password.match(/^[a-zA-Z0-9]{6,}$/);
+
+      if (!passIsValid) {
+        errors.push('El campo contraseña debe tener 6 caracteres');
+      }
     }
+
 
     if (errors.length) {
       res.send({

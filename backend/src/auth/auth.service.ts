@@ -24,15 +24,14 @@ export class AuthService {
     return null;
   }
 
-  async validateNewUser(email: string, password: string): Promise<any> {
+  async validateNewUser(email: string): Promise<any> {
     const user = await this.usersService.getUserByEmail(email);
 
-    if (!user) {
-      const result = password.match(/^[a-zA-Z0-9]{6,}$/);
-
-      return !!result;
+    if (user) {
+      return null;
     }
-    return null;
+
+    return true;
   }
 
   async generateAccessToken(email: string) {

@@ -6,8 +6,8 @@ import { UsersModule } from './users/users.module';
 import { HomeModule } from './home/home.module';
 import { CarritoModule } from './carrito/carrito.module';
 import { DetalleModule } from './detalle/detalle.module';
-import {RegisterValidator} from "./middlewares/RegisterValidator";
-import {LoginValidator} from "./middlewares/LoginValidator";
+import { RegisterValidator } from "./middlewares/RegisterValidator";
+import { LoginValidator } from "./middlewares/LoginValidator";
 
 @Module({
   imports: [
