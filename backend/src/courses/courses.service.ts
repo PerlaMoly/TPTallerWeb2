@@ -17,7 +17,7 @@ export class CoursesService {
     private coursesRepository: typeof Course,
   ) {}
 
-  async getCourse(id: number): Promise<any> {
+  async getCourse(id: number): Promise<Course> {
     return this.coursesRepository.findByPk(id);
   }
 

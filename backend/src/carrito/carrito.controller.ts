@@ -19,37 +19,34 @@ import {
   @Controller('carrito')
   export class CarritoController {
     constructor(private carritoService: CarritoService) {}
-  
+
     @Get()
     @UseGuards(JwtAuthGuard)
     async getAllCarrito(): Promise<CarritoDTO[]> {
       return await this.carritoService.getAllCarrito();
     }
-  
+
     @Get(':id')
-    async getCarritoById_Usuario(@Param('id',ParseIntPipe) id: number): Promise<CarritoDTO> {
+    async getCarritoById_Usuario(
+      @Param('id', ParseIntPipe) id: number,
+    ): Promise<CarritoDTO> {
       return await this.carritoService.getCarritoById_Usuario(id);
     }
-  
-    
-   @Post()
-   async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
-     return await this.carritoService.createCarrito(carrito);
-   }
 
+    @Post()
+    async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
+      return await this.carritoService.createCarrito(carrito);
+    }
 
-   @Put(':id')
-   async finalizarCarrito(@Param('id',ParseIntPipe) id: number): Promise<CarritoDTO> {
-    return await this.carritoService.finalizarCarrito(id);
-   }
- 
+    @Put(':id')
+    async finalizarCarrito(
+      @Param('id', ParseIntPipe) id: number,
+    ): Promise<CarritoDTO> {
+      return await this.carritoService.finalizarCarrito(id);
+    }
 
- 
-
-   @Delete(':id')
-   async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
-       return await this.carritoService.deleteCarrito(id)
-   }
-
-
+    @Delete(':id')
+    async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
+      return await this.carritoService.deleteCarrito(id);
+    }
   }

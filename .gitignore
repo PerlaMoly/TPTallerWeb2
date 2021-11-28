@@ -46,3 +46,4 @@ Thumbs.db
 
 frontend/package-lock.json
 frontend/angular.json
+backend/src/database/database.providers.ts

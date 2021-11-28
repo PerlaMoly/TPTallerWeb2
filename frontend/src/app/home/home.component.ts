@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     }
     else
     {      
-      this.route.navigate(['//courses/show/' + event.id]);
+      this.route.navigate(['//courses/' + event.id]);
     }    
   }
 
