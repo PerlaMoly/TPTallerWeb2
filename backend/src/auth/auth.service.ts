@@ -28,7 +28,6 @@ export class AuthService {
     const user = await this.usersService.getUserByEmail(email);
 
     if (!user) {
-
       const result = password.match(/^[a-zA-Z0-9]{6,}$/);
 
       return !!result;
