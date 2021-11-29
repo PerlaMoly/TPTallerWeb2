@@ -1,43 +1,195 @@
 <div class="container">
-  <h1 class="text-center">Aprendé Online</h1>
-  <div class="card">
-
-    <div class="">
-    <ng-autocomplete
-      [data]="data"
-      [searchKeyword]="keyword"
-      (selected)="selectEvent($event)"
-      (inputChanged)="onChangeSearch($event)"
-      [minQueryLength]="3"
-      [itemTemplate]="itemTemplate"
-      [notFoundTemplate]="notFoundTemplate"
-    >
-    </ng-autocomplete>
-    <ng-template #itemTemplate let-item>
-      <a [innerHTML]="item.name"></a>
-    </ng-template>
-
-    <ng-template #notFoundTemplate let-notFound>
-      <div [innerHTML]="notFound"></div>
-    </ng-template>
-    </div>
-  </div>
-
-  <div>
-    <nav class="nav nav-masthead justify-content-center">
-      <a class="nav-link active" routerLink="/home/category/DataScience" routerLinkActive="active">DATA SCIENCE</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/Mobile" routerLinkActive="active">MOBILE</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/Games" routerLinkActive="active">JUEGOS</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/DataBase" routerLinkActive="active">DATABASE</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/Angular" routerLinkActive="active">ANGULAR</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/CSHARP" routerLinkActive="active">C#</a> <!-- //20211125-->
-      <a class="nav-link active" routerLink="/home/category/.NET" routerLinkActive="active">.NET</a> <!-- //20211125-->
-    </nav>
-  </div>
   
-  <div class="Fondo">
-    <img src="assets/Fondo.jpg" >
-  </div>
+  
+
+<!-- Team -->
+<section id="team" class="pb-5 mt-5">
+    <div class="container">
+
+      <h5 class="section-title h1">Progra 24/7</h5>
+
+        <div class="row">
+
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" >
+                    <div class="mainflip flip-0">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                  <p><img class=" img-fluid" src="https://i.pinimg.com/originals/54/dd/2a/54dd2a6c17f894e233848e18eaa242d9.jpg" alt="card image"></p>
+                                    <h4 class="card-title"> DATA SCIENCE </h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="btn btn-primary btn-sm" routerLink="/home/category/DataScience" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/511px-Android_robot.svg.png" alt="card image"></p>
+                                    <h4 class="card-title">MOBILE</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="btn btn-primary btn-sm" routerLink="/home/category/Mobile" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Unreal_Engine_Logo.svg/986px-Unreal_Engine_Logo.svg.png" alt="card image"></p>
+                                    <h4 class="card-title">JUEGOS</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="btn btn-primary btn-sm" routerLink="/home/category/DataBase" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png" alt="card image"></p>
+                                    <h4 class="card-title">BASE DE DATOS</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="bnt btn-primary btn-sm" routerLink="/home/category/DataBase" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" alt="card image"></p>
+                                    <h4 class="card-title">ANGULAR</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="btn btn-primary btn-sm" routerLink="/home/category/Angular" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+            <!-- Team member -->
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <p><img class=" img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/C_Sharp_wordmark.svg/245px-C_Sharp_wordmark.svg.png" alt="card image"></p>
+                                    <h4 class="card-title">C#</h4>
+                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                    <a class="btn btn-primary btn-sm" routerLink="/home/category/CSHARP" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ./Team member -->
+             <!-- Team member -->
+             <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                  <div class="mainflip">
+                      <div class="frontside">
+                          <div class="card">
+                              <div class="card-body text-center">
+                                  <p><img class=" img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/.NET_Logo.svg/2048px-.NET_Logo.svg.png" alt="card image"></p>
+                                  <h4 class="card-title">.NET</h4>
+                                  <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                  <a class="btn btn-primary btn-sm" routerLink="/home/category/.NET" routerLinkActive="active">GO!</a> <!-- //20211125-->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- ./Team member -->
+          <!-- Team member -->
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                <div class="mainflip">
+                    <div class="frontside">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <p><img class=" img-fluid" src="https://miro.medium.com/max/800/1*wcEYa9AjnMZxXAau2iuhYw.png" alt="card image"></p>
+                                <h5 class="card-title">TODOS NUESTROS CURSOS</h5>
+                                <p class="card-text">This is basic card with image on top, title, description and button.</p>
+                                <a class="btn btn-primary btn-sm" routerLink="/courses" routerLinkActive="courses">GO!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ./Team member -->
+
+        </div>
+
+        <div class="row">
+
+         <h5 class="col-xs-12 col-sm-6 col-md-4"> Buscador </h5>
+
+        </div>
+
+         <div class="row">
+
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <ng-autocomplete
+              [data]="data"
+              [searchKeyword]="keyword"
+              (selected)="selectEvent($event)"
+              (inputChanged)="onChangeSearch($event)"
+              [minQueryLength]="3"
+              [itemTemplate]="itemTemplate"
+              [notFoundTemplate]="notFoundTemplate"
+            >
+            </ng-autocomplete>
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+          
+            <ng-template #notFoundTemplate let-notFound>
+              <div [innerHTML]="notFound"></div>
+            </ng-template>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Team -->
   <router-outlet></router-outlet>
   <!--<app-list-courses></app-list-courses>-->
 </div>

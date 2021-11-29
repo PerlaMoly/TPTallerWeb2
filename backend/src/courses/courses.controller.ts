@@ -22,12 +22,12 @@ export class coursesController {
 
   @Get()
   async getCourses(): Promise<CourseDTO[]> {
-    return await this.coursesService.getCourses();
+    return this.coursesService.getCourses();
   }
 
   @Get(':id')
   async getCourseById(@Param('id') id: number): Promise<CourseDTO> {
-    return await this.coursesService.getCourse(id);
+    return this.coursesService.getCourse(id);
   }
 
   @Get('/filter/:name') //20211125
@@ -36,8 +36,9 @@ export class coursesController {
   }
 
   @Get('/category/:category') //20211125
-  async getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
+  async getFilterCoursesCategory(
+    @Param('category') category: string,
+  ): Promise<CourseDTO[]> {
     return await this.coursesService.getFilterCoursesCategory(category);
   }
-
 }

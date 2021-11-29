@@ -1,7 +1,16 @@
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .Logo img{
     width:20%;
 
 }
 body{
     background-color: black;
+    
 }
+
+.navbar{
+
+     background-color:  #A8D8DF !important;
+}
+
