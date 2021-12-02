@@ -38,9 +38,8 @@ export class UsersService {
       address,
       password: hashedPW,
     }
-    const user = await this.usersRepository.create(dataToCreate);
 
-    return user;
+    return this.usersRepository.create(dataToCreate);
   }
 }
 

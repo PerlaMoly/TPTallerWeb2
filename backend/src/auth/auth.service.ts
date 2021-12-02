@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from 'src/users/users.service';
+import {response} from "express";
 const bcrypt = require('bcrypt');
 
 @Injectable()
@@ -11,49 +12,40 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
-    const user = await this.usersService.getUserByEmail(email);
+    return this.usersService.getUserByEmail(email).then(user => {
+      if (user) {
+        const passIsValid = bcrypt.compareSync(pass, user.password);
 
-    if (user) {
-      const passIsValid = bcrypt.compareSync(pass, user.password);
-
-      if (passIsValid) {
-        const { password, ...result } = user;
-        return result;
+        if (passIsValid) {
+          const { password, ...result } = user;
+          return result;
+        }
       }
-    }
-    return null;
+      return null;
+    }).catch(error => {
+      console.log('error');
+    });
   }
 
-  async validateNewUser(email: string, password: string): Promise<any> {
-    const user = await this.usersService.getUserByEmail(email);
-
-    if (!user) {
-
-      const result = password.match(/^[a-zA-Z0-9]{6,}$/);
-
-      return !!result;
-    }
-    return null;
+  async validateNewUser(email: string): Promise<any> {
+    return this.usersService.getUserByEmail(email).then(response => !response);
   }
 
   async generateAccessToken(email: string) {
-    const user = await this.usersService.getUserByEmail(email);
-    const payload = {
-      id: user.id,
-      email: user.email,
-    };
+    return this.usersService.getUserByEmail(email).then(user => {
+      const payload = {
+        id: user.id,
+        email: user.email,
+      };
 
-    return {
-      access_token: this.jwtService.sign(payload),
-      user,
-    };
+      return {
+        access_token: this.jwtService.sign(payload),
+        user,
+      };
+    });
   }
 
   async register(data) {
-    const user: any = await this.usersService.createUser(data);
-
-    return {
-      user,
-    };
+    return this.usersService.createUser(data).then(reponse => response);
   }
 }

@@ -1,4 +1,4 @@
-import {Body, Controller, Post, UnauthorizedException} from '@nestjs/common';
+import {BadRequestException, Body, Controller, Post, UnauthorizedException} from '@nestjs/common';
 import { AuthService } from './auth.service';
 
 @Controller('auth')
@@ -7,22 +7,36 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() loginDTO): Promise<{ access_token: string }> {
-    const { email, password } = loginDTO;
-    const valid = await this.authService.validateUser(email, password);
-    if (!valid) {
-      throw new UnauthorizedException();
+    try {
+      const { email, password } = loginDTO;
+      return this.authService.validateUser(email, password).then(isValid => {
+        if (!isValid) {
+          throw new BadRequestException({
+            message: 'Email o password invalidos.'
+          });
+        }
+        return this.authService.generateAccessToken(email);
+      });
+    } catch (e) {
+      throw e;
     }
-    return await this.authService.generateAccessToken(email);
   }
 
   @Post('register')
   async register(@Body() registerDTO) {
-    const { email, password } = registerDTO;
-    const valid = await this.authService.validateNewUser(email, password);
-    if (!valid) {
-      throw new UnauthorizedException();
-    }
+    try {
+      const { email } = registerDTO;
+      return this.authService.validateNewUser(email).then(isValid => {
+        if (!isValid) {
+          throw new BadRequestException({
+             message: 'Ya existe un usuario registrado con ese email.'
+          });
+        }
 
-    return await this.authService.register(registerDTO);
+        return this.authService.register(registerDTO);
+      });
+    } catch (e) {
+      throw e;
+    }
   }
 }

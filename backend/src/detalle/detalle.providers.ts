@@ -1,6 +1,6 @@
 import { Detalle } from './detalle.entity';
 
-export const carritoProviders = [
+export const detalleProviders = [
   {
     provide: 'DETALLE_REPOSITORY',
     useValue: Detalle,

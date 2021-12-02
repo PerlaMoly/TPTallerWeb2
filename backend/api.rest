@@ -1,6 +1,6 @@
  
 ###
-GET http://localhost:3000/carrito
+GET http://localhost:3000/carrito/1/1
  
 
 ###
@@ -13,7 +13,9 @@ Content-Type: application/json
 
 {
      "id_usuario":"1",
-    "estado":"1" 
+    "estado":"1" ,
+    "total":"0" 
+
 }
 
 ###
@@ -37,10 +39,14 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:3000/carrito/4
-PUT http://localhost:3000/carrito/5
+
+###
+GET  http://localhost:3000/carrito/finalizarCarrito/1
 Content-Type: application/json
  
-
+###
+GET http://localhost:3000/carrito/buscarMisOrdenes/1
+ 
 ###
 DELETE http://localhost:3000/carrito/4
 

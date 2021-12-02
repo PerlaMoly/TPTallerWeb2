@@ -1,0 +1,30 @@
+
+<div class="container">
+    <h1 class="text-center margintopbottom"  >Aprendé Online / Mi Ordenes</h1>
+   
+    <div class="card">
+
+        
+
+<table class="table table-border">
+    <thead>
+        <th>Numero</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Total</th> 
+</thead>
+
+<tbody>
+<tr *ngFor="let orden of carritoService.ordenes">
+    <td>{{orden.id}}</td>
+    <td>Finalizado</td>
+    <td>{{orden.updatedAt}}</td>
+    <td>${{orden.total}}</td>
+</tr>
+  
+</tbody>
+</table>
+  
+
+</div> 
+ 

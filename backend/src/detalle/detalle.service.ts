@@ -3,6 +3,7 @@ import { DetalleDTO } from "./detalle.dto";
 import { Detalle} from "./detalle.entity";
 import { Course} from "../courses/courses.entity";
 import { MessageDto } from 'src/common/message.dto';
+import sequelize, { literal } from 'sequelize';
 
 @Injectable()
 export class DetalleService {
@@ -24,6 +25,23 @@ export class DetalleService {
 
 
   }
+
+  async dameTotal(idCarrito: number): Promise<Detalle> {
+
+ 
+    const detalle = await this.detalleRepository.findOne({
+      attributes: [
+         [sequelize.fn('SUM', literal('precio * cantidad') ), 'precio'],
+       ]
+      ,
+      where: { id_carrito: idCarrito },
+    });
+  
+    return detalle;
+
+
+  }
+  
   
 
   async createDetalle(data): Promise<DetalleDTO>{
