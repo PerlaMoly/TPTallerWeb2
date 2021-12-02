@@ -39,10 +39,14 @@ export class CarritoComponent implements OnInit {
     this.carritoService.buscoCarritoUsuario(id_usuario).subscribe( 
           res =>{
             this.carritoService.carrito = res;
+            console.log(res);
+
             if(res==null){
 
                     this.carritoService.crearCarrito(id_usuario).subscribe(
                       res =>{
+                        console.log(res);
+
                       },
                       err =>console.error(err)
                     );
@@ -72,11 +76,15 @@ export class CarritoComponent implements OnInit {
     const idCarrito= this.id_carrito;
     this.carritoService.dameDetalleDelCarrito(idCarrito).subscribe(
       res =>{
+        if(res["status"]!=400){
+
+        
         this.carritoService.detalle = res;
         this.total = 0;
         for (let det of  this.carritoService.detalle){
           this.total = this.total + (det.cantidad*det.precio);
         }
+      }
 
       },
       err =>console.error(err)

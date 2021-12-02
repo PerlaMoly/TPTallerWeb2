@@ -68,7 +68,7 @@ export class CarritoService {
     return this.http.post<Carrito>(this.URL_API+'carrito/', JSON.stringify({
       id_usuario: id_usuario,
        estado: 1,
-       total:0})
+       total:0 })
       , httpOptions);
   }
 
