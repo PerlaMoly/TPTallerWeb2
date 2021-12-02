@@ -32,12 +32,12 @@ export class UsersController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   async getUserById(@Param('id') id: string): Promise<UserDTO> {
-    return await this.usersService.getUserById(id);
+    return this.usersService.getUserById(id);
   }
 
   @Post()
   async newUser(@Body() user: CreateUserDTO): Promise<UserDTO> {
-    return await this.usersService.createUser(user);
+    return this.usersService.createUser(user);
   }
   //
   // @Put(':id')

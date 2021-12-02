@@ -14,7 +14,7 @@ export class CarritoService {
     ) {}
   
   async getCarritoById_Usuario(idusuario: number,estado:number): Promise<any> {
-    const carrito = await this.carritoRepository.findOne({
+    const carrito = this.carritoRepository.findOne({
       where: { id_usuario: idusuario ,estado:estado},
     });
 
@@ -22,7 +22,7 @@ export class CarritoService {
   }
 
   async buscarMisOrdenes(idusuario: number): Promise<any> {
-    const carrito = await this.carritoRepository.findAll({
+    const carrito = this.carritoRepository.findAll({
       where: { id_usuario: idusuario ,estado:2},
     });
 
@@ -45,25 +45,25 @@ export class CarritoService {
       estado,
       total,
     };
-    const carrito = await this.carritoRepository.create(dataToCreate);
+    const carrito = this.carritoRepository.create(dataToCreate);
     return carrito;
   }
 
   async finalizarCarrito(id: number,total:number): Promise<any> {
-    const carrito = await this.carritoRepository.findByPk(id);
+    const carrito = this.carritoRepository.findByPk(id);
  
-    carrito.set({
+    (await carrito).set({
       estado: '2',
       total:total
     });
-    await carrito.save();
+    await (await carrito).save();
 
     return new MessageDto(total+` actualizado`);
   }
 
   async deleteCarrito(id: number): Promise<any> {
-    const carrito = await this.carritoRepository.findByPk(id);
-    await carrito.destroy();
+    const carrito = this.carritoRepository.findByPk(id);
+    (await carrito).destroy();
     return new MessageDto(` eliminado`);
   }
 }

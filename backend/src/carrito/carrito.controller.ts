@@ -30,46 +30,92 @@ import { Console } from 'console';
       private detalleService: DetalleService
 ) {}
 
+
+
+    // @Get()
+    // @UseGuards(JwtAuthGuard)
+    // async getAllCarrito(): Promise<CarritoDTO[]> {
+    //   return await this.carritoService.getAllCarrito();
+    // }
+
     @Get()
     @UseGuards(JwtAuthGuard)
     async getAllCarrito(): Promise<CarritoDTO[]> {
-      return await this.carritoService.getAllCarrito();
+      return this.carritoService.getAllCarrito();
     }
+
+
+    // @Get('/buscarMiCarrito/:id/:estado')
+    // async getCarritoById_Usuario(
+    //   @Param('id', ParseIntPipe) id: number, @Param('estado', ParseIntPipe) estado: number,
+    // ): Promise<CarritoDTO> {
+    //    return await this.carritoService.getCarritoById_Usuario(id,estado);
+    
+    // }
 
     @Get('/buscarMiCarrito/:id/:estado')
     async getCarritoById_Usuario(
       @Param('id', ParseIntPipe) id: number, @Param('estado', ParseIntPipe) estado: number,
     ): Promise<CarritoDTO> {
-       return await this.carritoService.getCarritoById_Usuario(id,estado);
+       return this.carritoService.getCarritoById_Usuario(id,estado);
     
     }
+
+
+    // @Get('/buscarMisOrdenes/:id')
+    // async buscarMisOrdenes(
+    //   @Param('id', ParseIntPipe) id: number 
+       
+    // ): Promise<CarritoDTO> {
+    //    return await this.carritoService.buscarMisOrdenes(id);
+    
+    // }
 
     @Get('/buscarMisOrdenes/:id')
     async buscarMisOrdenes(
       @Param('id', ParseIntPipe) id: number 
        
     ): Promise<CarritoDTO> {
-       return await this.carritoService.buscarMisOrdenes(id);
+       return this.carritoService.buscarMisOrdenes(id);
     
     }
 
     
+    // @Post()
+    // async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
+    //   return await this.carritoService.createCarrito(carrito);
+    // }
+
     @Post()
     async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
-      return await this.carritoService.createCarrito(carrito);
+      return this.carritoService.createCarrito(carrito);
     }
 
+    // @Get('/finalizarCarrito/:id')
+    // async finalizarCarrito(
+    //   @Param('id') id: number,
+    // ): Promise<CarritoDTO> {
+    //    const total=this.detalleService.dameTotal(id);
+    //   const totalNumber  =(await total).precio;
+    //   return await this.carritoService.finalizarCarrito(id,totalNumber);
+    // }
+    
     @Get('/finalizarCarrito/:id')
     async finalizarCarrito(
       @Param('id') id: number,
     ): Promise<CarritoDTO> {
        const total=this.detalleService.dameTotal(id);
       const totalNumber  =(await total).precio;
-      return await this.carritoService.finalizarCarrito(id,totalNumber);
+      return this.carritoService.finalizarCarrito(id,totalNumber);
     }
+
+    // @Delete(':id')
+    // async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
+    //   return await this.carritoService.deleteCarrito(id);
+    // }
 
     @Delete(':id')
     async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
-      return await this.carritoService.deleteCarrito(id);
+      return this.carritoService.deleteCarrito(id);
     }
   }
