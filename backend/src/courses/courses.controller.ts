@@ -20,24 +20,47 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 export class coursesController {
   constructor(private coursesService: CoursesService) {}
 
+  // @Get()
+  // async getCourses(): Promise<CourseDTO[]> {
+  //   return await this.coursesService.getCourses();
+  // }
+
   @Get()
-  async getCourses(): Promise<CourseDTO[]> {
-    return await this.coursesService.getCourses();
+  getCourses(): Promise<CourseDTO[]> {
+    return this.coursesService.getCourses().then().catch();
   }
+
+  // @Get(':id')
+  // async getCourseById(@Param('id') id: number): Promise<CourseDTO> {
+  //   return await this.coursesService.getCourse(id);
+  // }
 
   @Get(':id')
-  async getCourseById(@Param('id') id: number): Promise<CourseDTO> {
-    return await this.coursesService.getCourse(id);
+    getCourseById(@Param('id') id: number): Promise<CourseDTO> {
+    return this.coursesService.getCourse(id).then().catch();
   }
 
+  // @Get('/filter/:name') //20211125
+  // async getFilterCourses(@Param('name') name: string): Promise<CourseDTO[]> {
+  //   return await this.coursesService.getFilterCourses(name);
+  // }
+
+  
   @Get('/filter/:name') //20211125
-  async getFilterCourses(@Param('name') name: string): Promise<CourseDTO[]> {
-    return await this.coursesService.getFilterCourses(name);
+   getFilterCourses(@Param('name') name: string): Promise<CourseDTO[]> {
+    return this.coursesService.getFilterCourses(name).then().catch();
   }
+
+
+  // @Get('/category/:category') //20211125
+  // async getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
+  //   return await this.coursesService.getFilterCoursesCategory(category);
+  // }
 
   @Get('/category/:category') //20211125
-  async getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
-    return await this.coursesService.getFilterCoursesCategory(category);
+  getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
+    return this.coursesService.getFilterCoursesCategory(category).then().catch();
   }
+
 
 }
