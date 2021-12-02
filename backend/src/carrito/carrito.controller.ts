@@ -3,6 +3,7 @@ import {
     Controller,
     Delete,
     Get,
+    Module,
     Param,
     ParseIntPipe,
     Post,
@@ -13,12 +14,21 @@ import {
   import { ApiBearerAuth } from '@nestjs/swagger';
   import { CarritoDTO } from './carrito.dto';
   import { CarritoService } from './carrito.service';
+  import { DetalleService } from '../detalle/detalle.service';
   import {Carrito} from "./carrito.entity";
   import {JwtAuthGuard} from "../auth/jwt-auth.guard";
   
+
+  import { DetalleModule } from "../detalle/detalle.module";
+import { Console } from 'console';
+
+ 
   @Controller('carrito')
   export class CarritoController {
-    constructor(private carritoService: CarritoService) {}
+    constructor(
+      private carritoService: CarritoService,
+      private detalleService: DetalleService
+) {}
 
     @Get()
     @UseGuards(JwtAuthGuard)
@@ -26,23 +36,36 @@ import {
       return await this.carritoService.getAllCarrito();
     }
 
-    @Get(':id')
+    @Get('/buscarMiCarrito/:id/:estado')
     async getCarritoById_Usuario(
-      @Param('id', ParseIntPipe) id: number,
+      @Param('id', ParseIntPipe) id: number, @Param('estado', ParseIntPipe) estado: number,
     ): Promise<CarritoDTO> {
-      return await this.carritoService.getCarritoById_Usuario(id);
+       return await this.carritoService.getCarritoById_Usuario(id,estado);
+    
     }
 
+    @Get('/buscarMisOrdenes/:id')
+    async buscarMisOrdenes(
+      @Param('id', ParseIntPipe) id: number 
+       
+    ): Promise<CarritoDTO> {
+       return await this.carritoService.buscarMisOrdenes(id);
+    
+    }
+
+    
     @Post()
     async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
       return await this.carritoService.createCarrito(carrito);
     }
 
-    @Put(':id')
+    @Get('/finalizarCarrito/:id')
     async finalizarCarrito(
-      @Param('id', ParseIntPipe) id: number,
+      @Param('id') id: number,
     ): Promise<CarritoDTO> {
-      return await this.carritoService.finalizarCarrito(id);
+       const total=this.detalleService.dameTotal(id);
+      const totalNumber  =(await total).precio;
+      return await this.carritoService.finalizarCarrito(id,totalNumber);
     }
 
     @Delete(':id')

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { OrdenesComponent } from './ordenes/ordenes.component';
 import { HomeComponent } from './home/home.component';
 import { CarritoComponent } from './carrito/carrito.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: 'category/:category', component: ListCoursesComponent }, //20211125
     ],
   },
+  { path: 'ordenes', component: OrdenesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },

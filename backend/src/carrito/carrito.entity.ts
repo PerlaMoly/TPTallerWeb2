@@ -10,4 +10,7 @@ import {Table, Column, Model, DeletedAt, UpdatedAt, CreatedAt, Default} from 'se
     @Column
     estado:number;
 
+    @Column
+    total:number;
+
 }

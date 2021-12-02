@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ProfileComponent } from './profile/profile.component';
-
+import { OrdenesComponent } from './ordenes/ordenes.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +28,7 @@ import { ShowCourseComponent } from './show-course/show-course.component';
     ShowCourseComponent,
     CarritoComponent,
     ListCoursesComponent,
+    OrdenesComponent,
   ],
   imports: [
     BrowserModule,
