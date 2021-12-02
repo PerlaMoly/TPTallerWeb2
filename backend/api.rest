@@ -13,7 +13,9 @@ Content-Type: application/json
 
 {
      "id_usuario":"1",
-    "estado":"1" 
+    "estado":"1" ,
+    "total":"0" 
+
 }
 
 ###
