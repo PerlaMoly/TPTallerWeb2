@@ -73,7 +73,7 @@ export class CarritoComponent implements OnInit {
     this.carritoService.dameDetalleDelCarrito(idCarrito).subscribe(
       res =>{
         this.carritoService.detalle = res;
-
+        this.total = 0;
         for (let det of  this.carritoService.detalle){
           this.total = this.total + (det.cantidad*det.precio);
         }
