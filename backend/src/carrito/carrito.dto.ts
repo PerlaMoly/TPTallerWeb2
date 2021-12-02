@@ -8,4 +8,6 @@ export class CarritoDTO {
   @ApiProperty()
   estado:number;
   
+  @ApiProperty()
+  total:number;
 }

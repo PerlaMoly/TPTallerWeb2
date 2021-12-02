@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { DetalleService } from './detalle.service';
 import { DetalleController } from './detalle.controller';
 import {DatabaseModule} from "../database/database.module";
- import {carritoProviders} from "./detalle.providers";
+ import {detalleProviders} from "./detalle.providers";
 
 
 @Module({
@@ -10,7 +10,7 @@ import {DatabaseModule} from "../database/database.module";
   controllers: [DetalleController],
   providers: [
     DetalleService,
-    ...carritoProviders,
+    ...detalleProviders,
   ],
 })
 export class DetalleModule {}

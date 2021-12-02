@@ -20,10 +20,7 @@
 <tr *ngFor="let detalle of carritoService.detalle">
     <td>{{detalle.courses['name']}}</td>
     <td>
-        <!--<img src="assets/{{detalle.courses['imageURL']}}.jpg" style="width: 200px;">
-        -->
         <img [src] = "detalle.courses['imageURL']" class="card-img-top" alt="..."  style="width: 200px;"> 
-
     </td>
     <td>{{detalle.courses['category']}}</td>
     <td>U$S {{detalle.courses['price']}}</td>
@@ -34,11 +31,22 @@
  
     </td>
 </tr>
- 
+ <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total: U$S{{total}}</td>
+    <td><div *ngIf="total>0">
+        <button class="btn btn-success" 
+         (click)="finalizarCompra()">Finalizar Compra</button>
+        </div>
+   </td>
+ </tr>
 </tbody>
 </table>
-
-
+ 
+<div *ngIf="mensaje">{{mensaje}}</div>
 </div>
 
 </div> 
