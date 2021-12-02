@@ -17,16 +17,16 @@ export class CoursesService {
     private coursesRepository: typeof Course,
   ) {}
 
-  async getCourse(id: number): Promise<Course> {
+  getCourse(id: number): Promise<Course> {
     return this.coursesRepository.findByPk(id);
   }
 
-  async getCourses(): Promise<Course[]> {
+  getCourses(): Promise<Course[]> {
     return this.coursesRepository.findAll<Course>();
   }
 
   //20211125
-  async getCursos (name: string): Promise<any> {
+  getCursos (name: string): Promise<any> {
     return this.coursesRepository.findAll({
       attributes: ['id', 'name'],
       where: {name: {[Op.like]: '%'+  name + '%'}}
@@ -34,13 +34,14 @@ export class CoursesService {
   }
   
   //20211125
-  async getFilterCourses (name:String) : Promise<Course[]> {
+  getFilterCourses (name:String) : Promise<Course[]> {
     return this.coursesRepository.findAll<Course>({
       where: {name: {[Op.like]: '%'+  name + '%'}}
     });
   }
+
   //20211125
-  async getFilterCoursesCategory (category:string) : Promise<Course[]> {
+  getFilterCoursesCategory (category:string) : Promise<Course[]> {
     return this.coursesRepository.findAll<Course>({
       where: {category}
     });
