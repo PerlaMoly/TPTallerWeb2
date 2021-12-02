@@ -23,11 +23,9 @@ export class CarritoService {
 
     detalle : Detalle[] = []; 
     carrito : Carrito | undefined; 
+    ordenes : Carrito[] = []; 
  
-
-   dameMiCarrito(id_usuario:number){
-    return  this.http.get<Carrito>(this.URL_API+'carrito/'+id_usuario);
-  }
+ 
 
   dameDetalleDelCarrito(idCarrito: number){
     return this.http.get<Detalle[]>(this.URL_API+'detalle/'+idCarrito);
@@ -58,15 +56,28 @@ export class CarritoService {
 
   
   buscoCarritoUsuario(id_usuario:number){
-    return this.http.get<Carrito>(this.URL_API+'carrito/'+id_usuario);
+    return  this.http.get<Carrito>(this.URL_API+'carrito/buscarMiCarrito/'+id_usuario+'/1');
   }
 
+    
+  dameOrdenes(id_usuario:number){
+    return  this.http.get<Carrito[]>(this.URL_API+'carrito/buscarMisOrdenes/'+id_usuario);
+  }
+  
   crearCarrito(id_usuario:number){
     return this.http.post<Carrito>(this.URL_API+'carrito/', JSON.stringify({
       id_usuario: id_usuario,
-       estado: 1})
+       estado: 1,
+       total:0})
       , httpOptions);
   }
+
+
+  finalizarCompra(id_carrito:number){
+    return this.http.get<Carrito>(this.URL_API+'carrito/finalizarCarrito/'+id_carrito);
+  }
+
+  
 
 
 

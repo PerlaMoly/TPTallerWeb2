@@ -13,7 +13,7 @@ import { TokenStorageService } from '../../services/token-storage.service'; //20
 })
 export class ListCoursesComponent implements OnInit {
   courses!: Course[];
-  id_carrito = 0;
+  id_carrito : any;
   id_usuario: any;
   constructor(
     private courseService: CourseService,
@@ -60,8 +60,6 @@ export class ListCoursesComponent implements OnInit {
   agregarAlCarrito(price: number, id_producto: number) {
     //20211125
     this.id_usuario = this.tokenStorage.getUser().id; //obtengo id del usuario logueado;
-    this.carritoService.dameMiCarrito(this.id_usuario);
-    {
       this.carritoService.buscoCarritoUsuario(this.id_usuario).subscribe(
         (res) => {
           this.carritoService.carrito = res;
@@ -83,6 +81,6 @@ export class ListCoursesComponent implements OnInit {
         },
         (err) => console.error(err)
       );
-    }
+   
   }
 }
