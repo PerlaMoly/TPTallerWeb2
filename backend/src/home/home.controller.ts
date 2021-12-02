@@ -1,5 +1,5 @@
 import {Body, Controller, Post, Get, UnauthorizedException, Param} from '@nestjs/common';
-import { HomeService } from './home.service'; 
+import { HomeService } from './home.service';
 
 
 @Controller('home')
@@ -17,7 +17,6 @@ export class HomeController {
   @Get('getListCursos/:inputkeys')
      getListCursos(@Param('inputkeys') inputkeys){
      return this.homeService.getCursos(inputkeys).then(inputkeys).catch();
-      
   }
 
 
