@@ -64,7 +64,7 @@ export class CarritoService {
     return  this.http.get<Carrito[]>(this.URL_API+'carrito/buscarMisOrdenes/'+id_usuario);
   }
   
-  crearCarrito(id_usuario:number){
+  crearCarrito(id_usuario:number): Observable<any>{
     return this.http.post<Carrito>(this.URL_API+'carrito/', JSON.stringify({
       id_usuario: id_usuario,
        estado: 1,
