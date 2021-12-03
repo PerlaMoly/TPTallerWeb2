@@ -6,7 +6,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('login')
-  async login(@Body() loginDTO): Promise<{ access_token: string }> {
+  login(@Body() loginDTO): Promise<{ access_token: string }> {
     try {
       const { email, password } = loginDTO;
       return this.authService.validateUser(email, password).then(isValid => {
@@ -23,7 +23,7 @@ export class AuthController {
   }
 
   @Post('register')
-  async register(@Body() registerDTO) {
+  register(@Body() registerDTO) {
     try {
       const { email } = registerDTO;
       return this.authService.validateNewUser(email).then(isValid => {

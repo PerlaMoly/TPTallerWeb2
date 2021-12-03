@@ -12,21 +12,21 @@ export class UsersService {
   ) {
   }
 
-  async getUserByEmail(email: string): Promise<any> {
+  getUserByEmail(email: string): Promise<any> {
     return this.usersRepository.findOne({
       where: {email}
     });
   }
 
-  async getUserById(id: string): Promise<any> {
+  getUserById(id: string): Promise<any> {
     return this.usersRepository.findByPk(id);
   }
 
-  async getAllUsers(): Promise<User[]> {
+  getAllUsers(): Promise<User[]> {
     return this.usersRepository.findAll<User>();
   }
 
-  async createUser(data): Promise<UserDTO> {
+  createUser(data): Promise<UserDTO> {
     const { email, name, password, last_name, address } = data;
     const saltRounds = 10;
     const hashedPW = bcrypt.hashSync(password, saltRounds);
@@ -42,4 +42,3 @@ export class UsersService {
     return this.usersRepository.create(dataToCreate);
   }
 }
-
