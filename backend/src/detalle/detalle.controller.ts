@@ -21,24 +21,37 @@ import {
     constructor(private detalleService: DetalleService) {}
   
 
+    // @Post()
+    // async createDetalle(@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
+    //   return await this.detalleService.createDetalle(detalle);
+    // }
+
     @Post()
-    async createDetalle(@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
-      return await this.detalleService.createDetalle(detalle);
+    createDetalle(@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
+      return  this.detalleService.createDetalle(detalle);
     }
   
  
+    // @Get(':idCarrito')
+    // async getdetalleCarrito(@Param('idCarrito',ParseIntPipe) idCarrito: number): Promise<DetalleDTO> {
+    //   return await this.detalleService.getDetalleById_Carrito(idCarrito);
+    // }
+
     @Get(':idCarrito')
-    async getdetalleCarrito(@Param('idCarrito',ParseIntPipe) idCarrito: number): Promise<DetalleDTO> {
-      return await this.detalleService.getDetalleById_Carrito(idCarrito);
+    getdetalleCarrito(@Param('idCarrito',ParseIntPipe) idCarrito: number): Promise<DetalleDTO> {
+      return this.detalleService.getDetalleById_Carrito(idCarrito);
     }
   
      
 
+  //  @Put(':id')
+  //  async detallesCantidad(@Param('id',ParseIntPipe) id: number,@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
+  //    return await this.detalleService.actualizarDetalle(id,detalle);
+  //  }
+
    @Put(':id')
-   async detallesCantidad(@Param('id',ParseIntPipe) id: number,@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
-     return await this.detalleService.actualizarDetalle(id,detalle);
+   detallesCantidad(@Param('id',ParseIntPipe) id: number,@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
+     return this.detalleService.actualizarDetalle(id,detalle);
    }
-
-
  
   }
