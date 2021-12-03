@@ -14,22 +14,52 @@ export class DetalleService {
 
   
 
-  async getDetalleById_Carrito(idCarrito: number): Promise<any> {
+  // async getDetalleById_Carrito(idCarrito: number): Promise<any> {
 
  
-    const detalle = await this.detalleRepository.findAll({
+  //   const detalle = await this.detalleRepository.findAll({
+     
+  //     where: { id_carrito: idCarrito } ,  include:  [Course] ,
+  //   }); 
+  //   return detalle;
+
+
+  // }
+
+
+    getDetalleById_Carrito(idCarrito: number): Promise<any> {
+
+ 
+    const detalle = this.detalleRepository.findAll({
      
       where: { id_carrito: idCarrito } ,  include:  [Course] ,
     }); 
     return detalle;
 
 
-  }
+  }  
 
-  async dameTotal(idCarrito: number): Promise<Detalle> {
+  // async dameTotal(idCarrito: number): Promise<Detalle> {
 
  
-    const detalle = await this.detalleRepository.findOne({
+  //   const detalle = await this.detalleRepository.findOne({
+  //     attributes: [
+  //        [sequelize.fn('SUM', literal('precio * cantidad') ), 'precio'],
+  //      ]
+  //     ,
+  //     where: { id_carrito: idCarrito },
+  //   });
+  
+  //   return detalle;
+
+
+  // }
+
+
+  dameTotal(idCarrito: number): Promise<Detalle> {
+
+ 
+    const detalle = this.detalleRepository.findOne({
       attributes: [
          [sequelize.fn('SUM', literal('precio * cantidad') ), 'precio'],
        ]

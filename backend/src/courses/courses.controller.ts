@@ -27,7 +27,7 @@ export class coursesController {
 
   @Get()
   getCourses(): Promise<CourseDTO[]> {
-    return this.coursesService.getCourses().then().catch();
+    return this.coursesService.getCourses();
   }
 
   // @Get(':id')
@@ -37,7 +37,7 @@ export class coursesController {
 
   @Get(':id')
     getCourseById(@Param('id') id: number): Promise<CourseDTO> {
-    return this.coursesService.getCourse(id).then().catch();
+    return this.coursesService.getCourse(id);
   }
 
   // @Get('/filter/:name') //20211125
@@ -48,7 +48,7 @@ export class coursesController {
   
   @Get('/filter/:name') //20211125
    getFilterCourses(@Param('name') name: string): Promise<CourseDTO[]> {
-    return this.coursesService.getFilterCourses(name).then().catch();
+    return this.coursesService.getFilterCourses(name);
   }
 
 
@@ -59,7 +59,7 @@ export class coursesController {
 
   @Get('/category/:category') //20211125
   getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
-    return this.coursesService.getFilterCoursesCategory(category).then().catch();
+    return this.coursesService.getFilterCoursesCategory(category);
   }
 
 

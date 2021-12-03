@@ -16,7 +16,7 @@ export class HomeController {
 
   @Get('getListCursos/:inputkeys')
      getListCursos(@Param('inputkeys') inputkeys){
-     return this.homeService.getCursos(inputkeys).then(inputkeys).catch();
+     return this.homeService.getCursos(inputkeys);
   }
 
 

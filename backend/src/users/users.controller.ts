@@ -24,20 +24,20 @@ export class UsersController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  async getAllUsers(): Promise<UserDTO[]> {
-    return await this.usersService.getAllUsers();
+  getAllUsers(): Promise<UserDTO[]> {
+    return this.usersService.getAllUsers();
   }
 
   @Get(':id')
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
-  async getUserById(@Param('id') id: string): Promise<UserDTO> {
-    return await this.usersService.getUserById(id);
+  getUserById(@Param('id') id: string): Promise<UserDTO> {
+    return this.usersService.getUserById(id);
   }
 
   @Post()
-  async newUser(@Body() user: CreateUserDTO): Promise<UserDTO> {
-    return await this.usersService.createUser(user);
+  newUser(@Body() user: CreateUserDTO): Promise<UserDTO> {
+    return this.usersService.createUser(user);
   }
   //
   // @Put(':id')

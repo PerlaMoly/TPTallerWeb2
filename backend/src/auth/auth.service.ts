@@ -11,7 +11,7 @@ export class AuthService {
     private jwtService: JwtService
   ) {}
 
-  async validateUser(email: string, pass: string): Promise<any> {
+  validateUser(email: string, pass: string): Promise<any> {
     return this.usersService.getUserByEmail(email).then(user => {
       if (user) {
         const passIsValid = bcrypt.compareSync(pass, user.password);
@@ -27,11 +27,11 @@ export class AuthService {
     });
   }
 
-  async validateNewUser(email: string): Promise<any> {
+  validateNewUser(email: string): Promise<any> {
     return this.usersService.getUserByEmail(email).then(response => !response);
   }
 
-  async generateAccessToken(email: string) {
+  generateAccessToken(email: string) {
     return this.usersService.getUserByEmail(email).then(user => {
       const payload = {
         id: user.id,
@@ -45,7 +45,7 @@ export class AuthService {
     });
   }
 
-  async register(data) {
+  register(data) {
     return this.usersService.createUser(data).then(reponse => response);
   }
 }
