@@ -52,25 +52,35 @@ export class ShowCourseComponent implements OnInit {
           this.carritoService.carrito = res;
 
           if (res == null) {
+             
+
             this.carritoService.crearCarrito(this.id_usuario).subscribe(
-              (res) => {
-                this.id_carrito = res.id;
+              (res2) => {
+                this.id_carrito = res2.id;
+                this.carritoService
+                .agregarAlCarrito(1, this.id_carrito, price, id_producto)
+                .subscribe();
+
               },
               (err) => console.error(err)
             );
+
           }
            else{
             this.id_carrito = res.id;
-           } 
-
-          if (this.id_carrito != 0) {
             this.carritoService
-              .agregarAlCarrito(1, this.id_carrito, price, id_producto)
-              .subscribe();
+            .agregarAlCarrito(1, this.id_carrito, price, id_producto)
+            .subscribe();
+           }
+
+     
             this.router.navigate(['//carrito']);
-          }
+
         },
         (err) => console.error(err)
       );
     }
+
+
+    
 }

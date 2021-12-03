@@ -40,7 +40,7 @@ import { Console } from 'console';
 
     @Get()
     @UseGuards(JwtAuthGuard)
-    async getAllCarrito(): Promise<CarritoDTO[]> {
+    getAllCarrito(): Promise<CarritoDTO[]> {
       return this.carritoService.getAllCarrito();
     }
 
@@ -54,7 +54,7 @@ import { Console } from 'console';
     // }
 
     @Get('/buscarMiCarrito/:id/:estado')
-    async getCarritoById_Usuario(
+    getCarritoById_Usuario(
       @Param('id', ParseIntPipe) id: number, @Param('estado', ParseIntPipe) estado: number,
     ): Promise<CarritoDTO> {
        return this.carritoService.getCarritoById_Usuario(id,estado);
@@ -72,7 +72,7 @@ import { Console } from 'console';
     // }
 
     @Get('/buscarMisOrdenes/:id')
-    async buscarMisOrdenes(
+    buscarMisOrdenes(
       @Param('id', ParseIntPipe) id: number 
        
     ): Promise<CarritoDTO> {
@@ -87,7 +87,7 @@ import { Console } from 'console';
     // }
 
     @Post()
-    async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
+    createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
       return this.carritoService.createCarrito(carrito);
     }
 
@@ -101,21 +101,26 @@ import { Console } from 'console';
     // }
     
     @Get('/finalizarCarrito/:id')
-    async finalizarCarrito(
+    finalizarCarrito(
       @Param('id') id: number,
     ): Promise<CarritoDTO> {
-       const total=this.detalleService.dameTotal(id);
-      const totalNumber  =(await total).precio;
-      return this.carritoService.finalizarCarrito(id,totalNumber);
+
+      return this.detalleService.dameTotal(id).then(detalle => {
+        return this.carritoService.finalizarCarrito(id,detalle.precio);
+
+      });
+    } catch (e) {
+      throw e;
     }
 
+  
     // @Delete(':id')
     // async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
     //   return await this.carritoService.deleteCarrito(id);
     // }
 
     @Delete(':id')
-    async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
+    delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
       return this.carritoService.deleteCarrito(id);
     }
   }
