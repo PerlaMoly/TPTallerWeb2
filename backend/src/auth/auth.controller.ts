@@ -25,10 +25,10 @@ export class AuthController {
   login(@Body() loginDTO): Promise<{ access_token: string }> {
     try {
       const { email, password } = loginDTO;
-      return this.authService.validateUser(email, password).then((isValid) => {
-        if (!isValid) {
+      return this.authService.validateUser(email, password).then(response => {
+        if (response.error) {
           throw new BadRequestException({
-            message: 'Email o password invalidos.',
+            message: response.message,
           });
         }
         return this.authService.generateAccessToken(email);

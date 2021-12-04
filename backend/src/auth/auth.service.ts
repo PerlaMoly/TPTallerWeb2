@@ -16,14 +16,30 @@ export class AuthService {
       .getUserByEmail(email)
       .then((user) => {
         if (user) {
-          const passIsValid = bcrypt.compareSync(pass, user.password);
+          if(user.status) {
+            const passIsValid = bcrypt.compareSync(pass, user.password);
 
-          if (passIsValid) {
-            const { password, ...result } = user;
-            return result;
+            if (passIsValid) {
+              const { password, ...result } = user;
+              return {
+                error: false,
+                message: result,
+              };
+            }
+            return {
+              error: true,
+              message: 'El email o contraseña son invalidos.',
+            };
           }
+          return {
+            error: true,
+            message: 'El email ingresado no ha sido verificado.',
+          };
         }
-        return null;
+        return {
+          error: true,
+          message: 'El email ingresado no esta registrado.',
+        };
       })
       .catch((error) => {
         console.log('error');

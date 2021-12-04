@@ -24,12 +24,16 @@ const sendMail = async (user, token) => {
   const { email, name, last_name } = user;
   const link = 'http://localhost:4200/confirm/' + token;
 
+  const body = `
+    <b>Gracias por ser parte de nuestra gran comunidad de cursos. Para ininicar sesion haga click aqui</b>
+    <br>
+    <a href="${link}">Haga click aqui para verificar su mail!</a>`;
+
   const info = await transporter.sendMail({
     from: 'Code 24/7 <Code24-7@noreply.com.ar>',
     to: email,
-    subject: '¡Bienvenido ' + name + '' + last_name + '!',
-    html:
-      '<b>Gracias por ser parte de nuestra gran comunidad de cursos. Para ininicar sesion haga click en <a href=\''+link +'\'>Validar Email </a></b>',
+    subject: `¡Bienvenido ${name+' '+last_name}!`,
+    html: body,
   });
 
   console.log('Mensagge sent: %s', info.messageId);
