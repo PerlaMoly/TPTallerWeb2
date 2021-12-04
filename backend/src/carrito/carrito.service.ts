@@ -13,7 +13,7 @@ export class CarritoService {
     private carritoRepository: typeof Carrito ,
     ) {}
   
-  async getCarritoById_Usuario(idusuario: number,estado:number): Promise<any> {
+  getCarritoById_Usuario(idusuario: number,estado:number): Promise<any> {
     const carrito = this.carritoRepository.findOne({
       where: { id_usuario: idusuario ,estado:estado},
     });
@@ -21,7 +21,7 @@ export class CarritoService {
     return carrito;
   }
 
-  async buscarMisOrdenes(idusuario: number): Promise<any> {
+  buscarMisOrdenes(idusuario: number): Promise<any> {
     const carrito = this.carritoRepository.findAll({
       where: { id_usuario: idusuario ,estado:2},
     });
@@ -30,15 +30,15 @@ export class CarritoService {
   }
   
 
-  async getCarritoById(id: number): Promise<any> {
+  getCarritoById(id: number): Promise<any> {
     return this.carritoRepository.findByPk(id);
   }
 
-  async getAllCarrito(): Promise<Carrito[]> {
+  getAllCarrito(): Promise<Carrito[]> {
     return this.carritoRepository.findAll<Carrito>();
   }
 
-  async createCarrito(data): Promise<CarritoDTO> {
+  createCarrito(data): Promise<CarritoDTO> {
     const { id_usuario, estado , total} = data;
     const dataToCreate: CarritoDTO = {
       id_usuario,
@@ -48,22 +48,49 @@ export class CarritoService {
     const carrito = this.carritoRepository.create(dataToCreate);
     return carrito;
   }
+  
 
-  async finalizarCarrito(id: number,total:number): Promise<any> {
-    const carrito = this.carritoRepository.findByPk(id);
- 
-    (await carrito).set({
-      estado: '2',
-      total:total
-    });
-    await (await carrito).save();
-
-    return new MessageDto(total+` actualizado`);
+  finalizarCarrito(id: number,total:number): Promise<any>  {
+    return this.carritoRepository.findByPk(id).then(carrito=>{
+      carrito.set({
+        estado: '2',
+        total:total
+      });
+     carrito.save();
+     return new MessageDto(total+` actualizado`);
+         
+    }).catch(error => {console.log("error en Save")});
   }
+    
 
-  async deleteCarrito(id: number): Promise<any> {
-    const carrito = this.carritoRepository.findByPk(id);
-    (await carrito).destroy();
+  deleteCarrito(id: number): Promise<any> {
+    return this.carritoRepository.findByPk(id).then(carrito=>{
+    carrito.destroy();
     return new MessageDto(` eliminado`);
+    }).catch(error=>{
+      console.log('error al eliminar carrito')
+    });
   }
+
+
+  // async finalizarCarrito(id: number,total:number): Promise<any> {
+  //   const carrito = this.carritoRepository.findByPk(id);
+        
+  //   (await carrito).set({
+  //     estado: '2',
+  //     total:total
+  //   });
+        
+  //   (await (carrito)).save();
+
+  //   return new MessageDto(total+` actualizado`);
+  // }
+ 
+
+  // async deleteCarrito(id: number): Promise<any> {
+  //   const carrito = this.carritoRepository.findByPk(id);
+  //   (await carrito).destroy();
+  //   return new MessageDto(` eliminado`);
+  // }
+
 }
