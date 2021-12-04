@@ -8,13 +8,18 @@ const bcrypt = require('bcrypt');
 export class UsersService {
   constructor(
     @Inject('USERS_REPOSITORY')
-    private usersRepository: typeof User
-  ) {
-  }
+    private usersRepository: typeof User,
+  ) {}
 
   async getUserByEmail(email: string): Promise<any> {
     return this.usersRepository.findOne({
-      where: {email}
+      where: { email },
+    });
+  }
+
+  async getUserByToken(token: string): Promise<any> {
+    return this.usersRepository.findOne({
+      where: { token },
     });
   }
 
@@ -26,8 +31,14 @@ export class UsersService {
     return this.usersRepository.findAll<User>();
   }
 
+  async getTokenUser(token: string): Promise<any> {
+    return this.usersRepository.findOne({
+      where: { token },
+    });
+  }
+
   async createUser(data): Promise<UserDTO> {
-    const { email, name, password, last_name, address } = data;
+    const { email, name, password, last_name, token, status, address } = data;
     const saltRounds = 10;
     const hashedPW = bcrypt.hashSync(password, saltRounds);
 
@@ -37,7 +48,9 @@ export class UsersService {
       last_name,
       address,
       password: hashedPW,
-    }
+      token,
+      status,
+    };
 
     return this.usersRepository.create(dataToCreate);
   }

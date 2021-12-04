@@ -10,6 +10,8 @@ import { RegisterValidator } from "./middlewares/RegisterValidator";
 import { CarritoValidator } from "./middlewares/CarritoValidator";
 import { DetalleValidator } from "./middlewares/DetalleValidator";
 import { LoginValidator } from "./middlewares/LoginValidator";
+import { ValidateModule } from './validate/validate.module';
+
 
 @Module({
   imports: [
@@ -18,16 +20,20 @@ import { LoginValidator } from "./middlewares/LoginValidator";
     CarritoModule,
     DetalleModule,
     HomeModule,
-    CoursesModule
+    CoursesModule,
+    ValidateModule,
   ],
   controllers: [AppController],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(RegisterValidator).forRoutes("/auth/register");
-    consumer.apply(LoginValidator).forRoutes("/auth/login");
-    consumer.apply(CarritoValidator).forRoutes({ path: 'carrito', method: RequestMethod.POST });
-    consumer.apply(DetalleValidator).forRoutes({ path: 'detalle', method: RequestMethod.POST });
-
+    consumer.apply(RegisterValidator).forRoutes('/auth/register');
+    consumer.apply(LoginValidator).forRoutes('/auth/login');
+    consumer
+      .apply(CarritoValidator)
+      .forRoutes({ path: 'carrito', method: RequestMethod.POST });
+    consumer
+      .apply(DetalleValidator)
+      .forRoutes({ path: 'detalle', method: RequestMethod.POST });
   }
 }
