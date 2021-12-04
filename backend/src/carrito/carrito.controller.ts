@@ -81,26 +81,13 @@ import { Console } from 'console';
     }
 
     
-    // @Post()
-    // async createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
-    //   return await this.carritoService.createCarrito(carrito);
-    // }
 
     @Post()
     createCarrito(@Body() carrito: CarritoDTO): Promise<CarritoDTO> {
       return this.carritoService.createCarrito(carrito);
     }
 
-    // @Get('/finalizarCarrito/:id')
-    // async finalizarCarrito(
-    //   @Param('id') id: number,
-    // ): Promise<CarritoDTO> {
-    //    const total=this.detalleService.dameTotal(id);
-    //   const totalNumber  =(await total).precio;
-    //   return await this.carritoService.finalizarCarrito(id,totalNumber);
-    // }
-    
-    @Get('/finalizarCarrito/:id')
+      @Get('/finalizarCarrito/:id')
     finalizarCarrito(
       @Param('id') id: number,
     ): Promise<CarritoDTO> {
