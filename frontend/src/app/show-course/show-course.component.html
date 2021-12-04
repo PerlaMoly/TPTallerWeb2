@@ -1,9 +1,11 @@
 <div class="container">
+  <h1 class="text-center">Aprendé Online / Detalle de curso</h1>
   <div class="card w-100 text-center" style="width: 18rem;">
-  <img [src] = "course.imageURL" class="card-img-top" alt="..."> 
+ 
      <!--  <img src="assets/{{courses['imageURL']}}.jpg" style="width: 200px;">-->
     <div class="card-body">
-
+      <img [src] = "course.imageURL" class="card-img-top" alt="..." style="width: 20em;"> 
+      
       <div class="row">
         <div class="col-sm-8">
          
@@ -18,7 +20,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Precio</h5>
-              <h6 class="card-text">${{course.price}} U$S</h6> 
+              <h6 class="card-text">U$S {{course.price}}</h6> 
               <button type="button" class="btn btn-success btn-sm" (click)="agregarAlCarrito(course.price, course.id)"> 
                Agregar al carrito
               </button>
