@@ -9,6 +9,7 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
 import { ShowCourseComponent } from './show-course/show-course.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'courses/:id', component: ShowCourseComponent },
   { path: 'courses/show/:id', component: ListCoursesComponent },
   { path: 'courses/filter/:name', component: ListCoursesComponent }, //20211125
+  { path: 'confirm/:token', component: ConfirmComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
