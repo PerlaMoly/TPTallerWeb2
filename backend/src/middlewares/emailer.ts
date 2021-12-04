@@ -6,8 +6,8 @@ const createTrans = () => {
     port: 465,
     secure: true,
     auth: {
-      user: 'ptallerweb2@gmail.com',
-      pass: 't@ller_web2021',
+      user: 'matiasfernandez201@gmail.com',
+      pass: 'ndjnpacklmpcgqvx',
     },
     tls: {
       // do not fail on invalid certs
