@@ -27,7 +27,7 @@ export class Detalle extends Model {
   @Column
   id: number;
 
-  @ForeignKey(() => Course)
+  @Column
   id_producto: number;
 
   @Column
