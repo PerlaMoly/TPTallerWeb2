@@ -25,7 +25,7 @@ const sendMail = async (user, token) => {
   const link = 'http://localhost:4200/confirm/' + token;
 
   const body = `
-    <b>Gracias por ser parte de nuestra gran comunidad de cursos. Para ininicar sesion haga click aqui</b>
+    <b>Gracias por ser parte de nuestra gran comunidad de cursos. Para iniciar sesión haga click aquí</b>
     <br>
     <a href="${link}">Haga click aqui para verificar su mail!</a>`;
 
