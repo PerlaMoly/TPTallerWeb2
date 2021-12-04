@@ -58,17 +58,8 @@ export class UsersController {
   //   return await this.usersService.deleteUser(id);
   // }
 
- 
   @Get('/actualizarUsuario/:id')
-   finalizarCarrito(
-     @Param('id') id: number,
-   ): Promise<UserDTO> {
-
-     return this.usersService.actualizarUsuario(id) ;
-   }
-
-
-
-
-
+  actualizarUsuario(@Param('id') id: number): Promise<UserDTO> {
+    return this.usersService.actualizarUsuario(id);
+  }
 }
