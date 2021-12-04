@@ -22,7 +22,7 @@ import { Course } from '../courses/courses.entity';
 })
 export class Detalle extends Model {
   @PrimaryKey
-  @AllowNull
+  @IsNull
   @AutoIncrement
   @Column
   id: number;
