@@ -57,6 +57,7 @@ export class ShowCourseComponent implements OnInit {
             this.carritoService.crearCarrito(this.id_usuario).subscribe(
               (res2) => {
                 this.id_carrito = res2.id;
+                console.log("if");
                 this.carritoService
                 .agregarAlCarrito(1, this.id_carrito, price, id_producto)
                 .subscribe();
@@ -68,6 +69,7 @@ export class ShowCourseComponent implements OnInit {
           }
            else{
             this.id_carrito = res.id;
+            console.log("else");
             this.carritoService
             .agregarAlCarrito(1, this.id_carrito, price, id_producto)
             .subscribe();

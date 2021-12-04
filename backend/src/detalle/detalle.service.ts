@@ -29,7 +29,6 @@ export class DetalleService {
 
     getDetalleById_Carrito(idCarrito: number): Promise<any> {
 
- 
     const detalle = this.detalleRepository.findAll({
      
       where: { id_carrito: idCarrito } ,  include:  [Course] ,
@@ -56,9 +55,11 @@ export class DetalleService {
 
   }
   
+
+  
   
 
-  async createDetalle(data): Promise<DetalleDTO>{
+  createDetalle(data): Promise<DetalleDTO>{
    const {id_producto,cantidad,id_carrito,precio} = data;
    const dataToCreate: DetalleDTO = {
     id_producto,
@@ -66,7 +67,7 @@ export class DetalleService {
     id_carrito,
     precio
   }
-  const detalle = await this.detalleRepository.create(dataToCreate);
+  const detalle =  this.detalleRepository.create(dataToCreate);
   return;
   } 
 

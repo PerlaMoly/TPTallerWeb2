@@ -28,6 +28,7 @@ import {
 
     @Post()
     createDetalle(@Body() detalle: DetalleDTO): Promise<DetalleDTO> {
+      console.log(detalle);
       return  this.detalleService.createDetalle(detalle);
     }
   

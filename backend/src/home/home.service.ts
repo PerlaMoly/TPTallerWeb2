@@ -9,9 +9,6 @@ export class HomeService {
     private courseService: CoursesService
   ) {}
 
-//   async getCursos(inputkeys: string): Promise<any> {
-//     return this.courseService.getCursos(inputkeys);
-//  }
 
  getCursos(inputkeys: string): Promise<any> {
   return this.courseService.getCursos(inputkeys);
