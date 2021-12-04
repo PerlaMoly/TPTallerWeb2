@@ -10,6 +10,8 @@ import {
 
 import { UsersService } from 'src/users/users.service';
 import { AuthService } from './auth.service';
+import { MessageDto } from 'src/common/message.dto';
+import { User } from 'src/users/users.entity';
 const emailer = require('../middlewares/emailer');
 
 @Controller('auth')
@@ -41,7 +43,7 @@ export class AuthController {
     try {
       const { email } = registerDTO;
 
-      const token = Math.floor(1000 + Math.random() * 9000).toString();
+      const token = Math.random().toString(36).substr(2);
 
       registerDTO.token = token;
 
@@ -65,10 +67,10 @@ export class AuthController {
     try {
       // verificar la data
 
-      const data = this.userService.getUserByToken(token);
+      const data = await this.userService.getUserByToken(token);
 
       if (data == null) {
-        return console.log('error');
+        return new MessageDto(`Error`);
       }
 
       const tokenUser = (await data).token;
@@ -77,11 +79,11 @@ export class AuthController {
 
       if (tokenUser === token) {
         (await data).status = true;
+        this.userService.actualizarUsuario((await data).id);
+        return new MessageDto(`Confirmado`);
+      } else {
+        return new MessageDto(`Error`);
       }
-
-      // redireccionar a la confirmacion
-
-      return console.log('usuario confirmado');
     } catch (e) {
       throw e;
     }

@@ -24,9 +24,11 @@ const sendMail = async (user, token) => {
     to: email,
     subject: '¡Bienvenido ' + name + '' + last_name + '!',
     html:
-      '<b>Gracias por ser parte de nuestra gran comunidad de cursos. Para ininicar sesion haga click aqui <a> http://localhost:4200/validateAccount/' +
+      '<b>Gracias por ser parte de nuestra gran comunidad de cursos. Para ininicar sesion haga click aqui' +
+      '<a> http://localhost:4200/confirm/' +
       token +
-      '</a></b>',
+      '</a>' +
+      '</b>',
   });
 
   console.log('Mensagge sent: %s', info.messageId);
