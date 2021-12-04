@@ -45,12 +45,10 @@ export class coursesController {
   //   return await this.coursesService.getFilterCourses(name);
   // }
 
-  
   @Get('/filter/:name') //20211125
    getFilterCourses(@Param('name') name: string): Promise<CourseDTO[]> {
     return this.coursesService.getFilterCourses(name);
   }
-
 
   // @Get('/category/:category') //20211125
   // async getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
@@ -61,6 +59,4 @@ export class coursesController {
   getFilterCoursesCategory(@Param('category') category: string): Promise<CourseDTO[]> {
     return this.coursesService.getFilterCoursesCategory(category);
   }
-
-
 }

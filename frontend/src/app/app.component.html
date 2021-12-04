@@ -1,8 +1,8 @@
 <div id="app">
-  <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <nav class="navbar navbar-expand">
      <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
-        <a href="/home" class="nav-link" routerLink="home">Home </a>
+        <a href="/home" class="nav-link" routerLink="home"><i class="bi bi-house-door-fill text-dark"></i></a>
       </li>
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
@@ -10,39 +10,40 @@
       <li class="nav-item" *ngIf="showModeratorBoard">
         <a href="/mod" class="nav-link" routerLink="mod">Moderator Board</a>
       </li>
-      <li class="nav-item">
-        <a href="/courses" class="nav-link"  routerLink="courses">Courses</a>
-      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+
       <li class="nav-item">
-        <a href="/register" class="nav-link" routerLink="register">Sign Up</a>
+        <a href="/login" class="nav-link text-dark mr-3" routerLink="login">Login</a>
       </li>
+
       <li class="nav-item">
-        <a href="/login" class="nav-link" routerLink="login">Login</a>
+        <a href="/register" class="nav-link btn btn-outline-dark btn-sm" routerLink="register">Registrarse</a>
       </li>
+      
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/profile" class="nav-link" routerLink="profile">{{ name }}</a>
+        <a href="/profile" class="nav-link" routerLink="profile"><i class="bi bi-person-fill text-dark"></i></a>
       </li>
 
       <li class="nav-item">
-        <a href="/carrito" class="nav-link" routerLink="carrito">Mi Carrito</a>
+        <a href="/carrito" class="nav-link" routerLink="carrito"><i class="bi bi-cart-fill text-dark"></i></a>
       </li>
       <li class="nav-item">
         <a href="/ordenes" class="nav-link" routerLink="ordenes">Mi Ordenes</a>
       </li>
 
       <li class="nav-item">
-        <a href class="nav-link" (click)="logout()">LogOut</a>
+        <a href class="nav-link" (click)="logout()"><i class="bi bi-box-arrow-right text-dark"></i></a>
       </li>
     </ul>
   </nav>
-
+  
   <div class="container">
     <router-outlet></router-outlet>
   </div>
 </div>
+

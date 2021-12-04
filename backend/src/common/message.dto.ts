@@ -1,4 +1,5 @@
 export class MessageDto {
+    [x: string]: any;
     message: string[] = [];
 
     constructor(message: string) {
