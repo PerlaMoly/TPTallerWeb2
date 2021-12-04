@@ -63,21 +63,27 @@ export class ListCoursesComponent implements OnInit {
       this.carritoService.buscoCarritoUsuario(this.id_usuario).subscribe(
         (res) => {
           this.carritoService.carrito = res;
-          this.id_carrito = res.id;
+
           if (res == null) {
             this.carritoService.crearCarrito(this.id_usuario).subscribe(
               (res) => {
                 this.id_carrito = res.id;
+                this.carritoService
+                .agregarAlCarrito(1, this.id_carrito, price, id_producto)
+                .subscribe();
               },
               (err) => console.error(err)
             );
-          }
-          if (this.id_carrito != 0) {
+          }else{
+            this.id_carrito = this.carritoService.carrito.id;
             this.carritoService
-              .agregarAlCarrito(1, this.id_carrito, price, id_producto)
-              .subscribe();
-            this.router.navigate(['//carrito']);
+            .agregarAlCarrito(1, this.id_carrito, price, id_producto)
+            .subscribe();
+
           }
+         
+            this.router.navigate(['//carrito']);
+  
         },
         (err) => console.error(err)
       );

@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { UserDTO } from './user.dto';
 import { User } from './users.entity';
 import { CreateUserDTO } from './createUser.dto';
+import { MessageDto } from 'src/common/message.dto';
 const bcrypt = require('bcrypt');
 
 @Injectable()
@@ -47,5 +48,19 @@ export class UsersService {
     };
 
     return this.usersRepository.create(dataToCreate);
+  }
+
+
+
+   
+actualizarUsuario(id: number): Promise<any>  {
+    return this.usersRepository.findByPk(id).then(user=>{
+      user.set({
+        status:true,
+       });
+       user.save();
+     return new MessageDto(`usuario actualizado`);
+         
+    }).catch(error => {console.log("error en Save")});
   }
 }
