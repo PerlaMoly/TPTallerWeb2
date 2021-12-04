@@ -65,25 +65,15 @@ export class AuthController {
   @Get(':token')
   async confirm(@Param('token') token: string) {
     try {
-      // verificar la data
-
-      const data = await this.userService.getUserByToken(token);
-
-      if (data == null) {
+      return this.userService.getUserByToken(token).then(user => {
+        if (user && user.token === token) {
+          this.userService.actualizarUsuario(user.id);
+          return new MessageDto('Confirmado');
+        }
         return new MessageDto(`Error`);
-      }
-
-      const tokenUser = (await data).token;
-
-      // Actualizar Usuario
-
-      if (tokenUser === token) {
-        (await data).status = true;
-        this.userService.actualizarUsuario((await data).id);
-        return new MessageDto(`Confirmado`);
-      } else {
-        return new MessageDto(`Error`);
-      }
+      }).catch(error => {
+        console.log(error);
+      });
     } catch (e) {
       throw e;
     }
