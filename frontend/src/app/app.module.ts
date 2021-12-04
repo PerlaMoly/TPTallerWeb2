@@ -16,8 +16,6 @@ import { authInterceptorProviders } from './helpers/auth.interceptor';
 import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 import { ListCoursesComponent } from './courses/list-courses/list-courses.component';
 import { ShowCourseComponent } from './show-course/show-course.component';
-import { ValidateTokenComponent } from './validate-token/validate-token.component';
-
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { ValidateTokenComponent } from './validate-token/validate-token.componen
     CarritoComponent,
     ListCoursesComponent,
     OrdenesComponent,
-    ValidateTokenComponent,
   ],
   imports: [
     BrowserModule,
