@@ -1,9 +1,11 @@
-<div class="container" *ngIf="currentUser; else loggedOut">
+<div class="card-body" *ngIf="currentUser; else loggedOut">
+
   <header class="jumbotron">
     <h3>
       <strong>{{ currentUser.name }} {{ currentUser.last_name }}</strong> Profile
     </h3>
   </header>
+  <div class="list-group-flush">
   <p>
     <strong>Direccion:</strong>
     {{ currentUser.address }}
@@ -13,6 +15,8 @@
     {{ currentUser.email }}
   </p>
 </div>
+</div>
+
 
 <ng-template #loggedOut>
   Please login.

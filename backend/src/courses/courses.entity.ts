@@ -38,7 +38,7 @@ export class Course extends Model {
   price: number;
 
   @Column
-  category: string; //20211125
+  category: string;
 
   @Column
   imageURL: string;

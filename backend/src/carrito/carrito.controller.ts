@@ -113,11 +113,7 @@ import { Console } from 'console';
       throw e;
     }
 
-  
-    // @Delete(':id')
-    // async delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
-    //   return await this.carritoService.deleteCarrito(id);
-    // }
+      
 
     @Delete(':id')
     delete(@Param('id', ParseIntPipe) id: number): Promise<CarritoDTO> {
