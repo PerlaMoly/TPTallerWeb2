@@ -19,6 +19,12 @@ export class User extends Model {
   @Column
   password: string;
 
+  @Column
+  token: string;
+
+  @Column
+  status: boolean;
+
   @CreatedAt
   created_at: Date;
 

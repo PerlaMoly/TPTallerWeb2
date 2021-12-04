@@ -15,4 +15,10 @@ export class CreateUserDTO {
 
   @ApiProperty()
   password: string;
+
+  @ApiProperty()
+  token: string;
+
+  @ApiProperty()
+  status: string;
 }
