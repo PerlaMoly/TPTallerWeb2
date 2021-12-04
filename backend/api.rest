@@ -55,9 +55,9 @@ POST http://localhost:3000/detalle
 Content-Type: application/json
 
 {
-    "id_producto":"3",
-    "cantidad":"3",
-    "id_carrito":"2",
+    "id_producto":"1",
+    "cantidad":"1",
+    "id_carrito":"1",
     "precio":"200"
 
 }
@@ -82,4 +82,11 @@ Content-Type: application/json
 ###
 GET http://localhost:3000/detalle/1
 Content-Type: application/json
+ 
+
+###
+GET http://localhost:3000/users/actualizarUsuario/1
+Content-Type: application/json
+ 
+
  
