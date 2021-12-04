@@ -10,7 +10,7 @@
         <a class="btn btn-danger" routerLink="{{ course.id }}" routerLinkActive="courses"> Detalle </a>
       </div>
 
-      <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 18rem;">
   <img [src]="course.imageURL" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">{{course.name}}</h5>
@@ -18,7 +18,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item"><i class="bi bi-clock-fill"></i> {{ course.hours }} Hs </li>
     <li class="list-group-item"><i class="bi bi-laptop-fill"></i> {{course.category}} </li>
-    <li class="list-group-item"><h4 class="text-dark"><i class="bi bi-tag-fill"></i> {{course.price}} ARS</h4> <small class="text-primary"> 12 coutas </small>  
+    <li class="list-group-item"><h4 class="text-dark"><i class="bi bi-tag-fill"></i>U$S {{course.price}}</h4> <small class="text-primary"> 12 coutas </small>  
       </li>
 
       <li class="list-group-item"> <img src="http://ketekipo.com.ar/wp-content/uploads/2020/05/mercado-pago.png" class="img-fluid card-img-top rounded" height="20px"> 

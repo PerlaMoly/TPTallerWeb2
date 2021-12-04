@@ -39,22 +39,6 @@ export class DetalleService {
 
   }  
 
-  // async dameTotal(idCarrito: number): Promise<Detalle> {
-
- 
-  //   const detalle = await this.detalleRepository.findOne({
-  //     attributes: [
-  //        [sequelize.fn('SUM', literal('precio * cantidad') ), 'precio'],
-  //      ]
-  //     ,
-  //     where: { id_carrito: idCarrito },
-  //   });
-  
-  //   return detalle;
-
-
-  // }
-
 
   dameTotal(idCarrito: number): Promise<Detalle> {
 

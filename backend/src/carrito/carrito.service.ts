@@ -71,26 +71,4 @@ export class CarritoService {
       console.log('error al eliminar carrito')
     });
   }
-
-
-  // async finalizarCarrito(id: number,total:number): Promise<any> {
-  //   const carrito = this.carritoRepository.findByPk(id);
-        
-  //   (await carrito).set({
-  //     estado: '2',
-  //     total:total
-  //   });
-        
-  //   (await (carrito)).save();
-
-  //   return new MessageDto(total+` actualizado`);
-  // }
- 
-
-  // async deleteCarrito(id: number): Promise<any> {
-  //   const carrito = this.carritoRepository.findByPk(id);
-  //   (await carrito).destroy();
-  //   return new MessageDto(` eliminado`);
-  // }
-
 }

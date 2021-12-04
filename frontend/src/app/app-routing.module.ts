@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'courses/:id', component: ShowCourseComponent },
   { path: 'courses/show/:id', component: ListCoursesComponent },
   { path: 'courses/filter/:name', component: ListCoursesComponent }, //20211125
-
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
