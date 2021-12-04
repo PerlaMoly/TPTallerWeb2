@@ -7,12 +7,17 @@ import {
   Post,
   UnauthorizedException,
 } from '@nestjs/common';
+
+import { UsersService } from 'src/users/users.service';
 import { AuthService } from './auth.service';
 const emailer = require('../middlewares/emailer');
 
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private userService: UsersService,
+  ) {}
 
   @Post('login')
   async login(@Body() loginDTO): Promise<{ access_token: string }> {
@@ -56,7 +61,32 @@ export class AuthController {
   }
 
   @Get(':token')
-  async validateAccount(@Param('token') token: string) {
-    return this.authService.validateEmailToken(token).then().catch();
+  async confirm(@Param('token') token: string) {
+    try {
+      // verificar la data
+
+      const data = this.userService.getUserByToken(token);
+
+      if (data == null) {
+        return console.log('error');
+      }
+
+      const tokenUser = (await data).token;
+
+      // Actualizar Usuario
+
+      if (tokenUser === token) {
+        (await data).status = true;
+      }
+
+      // redireccionar a la confirmacion
+
+      return console.log('usuario confirmado');
+    } catch (e) {
+      throw e;
+    }
   }
 }
+  
+
+

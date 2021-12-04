@@ -9,9 +9,7 @@ import { DetalleModule } from './detalle/detalle.module';
 import { RegisterValidator } from "./middlewares/RegisterValidator";
 import { CarritoValidator } from "./middlewares/CarritoValidator";
 import { DetalleValidator } from "./middlewares/DetalleValidator";
-import { LoginValidator } from "./middlewares/LoginValidator";
-import { ValidateModule } from './validate/validate.module';
-
+import { LoginValidator } from './middlewares/LoginValidator';
 
 @Module({
   imports: [
@@ -21,7 +19,6 @@ import { ValidateModule } from './validate/validate.module';
     DetalleModule,
     HomeModule,
     CoursesModule,
-    ValidateModule,
   ],
   controllers: [AppController],
 })

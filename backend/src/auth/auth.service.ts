@@ -36,10 +36,6 @@ export class AuthService {
       .then((response) => !response);
   }
 
-  async validateEmailToken(token: string) {
-    return this.usersService.getTokenUser(token);
-  }
-
   async generateAccessToken(email: string) {
     return this.usersService.getUserByEmail(email).then((user) => {
       const payload = {

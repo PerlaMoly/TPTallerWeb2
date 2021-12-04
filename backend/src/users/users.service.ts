@@ -17,7 +17,7 @@ export class UsersService {
     });
   }
 
-  async getUserByToken(token: string): Promise<any> {
+  async getUserByToken(token: string): Promise<User> {
     return this.usersRepository.findOne({
       where: { token },
     });
@@ -29,12 +29,6 @@ export class UsersService {
 
   async getAllUsers(): Promise<User[]> {
     return this.usersRepository.findAll<User>();
-  }
-
-  async getTokenUser(token: string): Promise<any> {
-    return this.usersRepository.findOne({
-      where: { token },
-    });
   }
 
   async createUser(data): Promise<UserDTO> {
